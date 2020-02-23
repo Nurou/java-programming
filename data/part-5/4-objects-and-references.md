@@ -13,30 +13,30 @@ hidden: false
 
 <!-- - Kertaat luokkien ja olioiden toimintaa. -->
 
-- You will brush up on using classes and objects.
+- You brush up on how to use classes and objects.
 
 <!-- - Tiedät mikä on `null`-viite ja tiedät mistä virhe NullPointerException johtuu. -->
 
-- You know what a `null` reference is, and what causes the NullPointerException error.
+- You know what a `null` reference is, and what causes a NullPointerException error.
 
 <!-- - Osaat käyttää olioita oliomuuttujana ja metodin parametrina. -->
 
-- You can use an object as an object variable and a method parameter.
+- You know how to use an object as an instance variable and a method parameter.
 
 <!-- - Osaat luoda metodin, joka palauttaa olion. -->
 
-- You can create a method that returns an object.
+- You know how to create a method that returns an object.
 
 <!-- - Osaat luoda equals-metodin, jolla voi tarkastaa onko kaksi samantyyppistä oliota sisällöllisesti samat. -->
 
-- You can create the method equals, which can be used to check if two objects of the same type have the same contents or state.
+- You know how to create an equals method that can be used to check if two objects of the same type are also internally equal.
 
 </text-box>
 
 
 <!-- Jatketaan olioiden ja viitteiden parissa. Oletetaan, että käytössämme on alla oleva henkilöä kuvaava luokka. Henkilöllä on oliomuuttujat nimi, ikä, paino ja pituus, jonka lisäksi se tarjoaa metodin mm. painoindeksin laskemiseen. -->
 
-Let's continue working with objects and references. Assume we can use the class that represents a person, shown below. Person has object variables name, age, weight and height. Additionally, it contains methods to calculate the body mass index, among other things.
+Let's continue working with objects and references, and assume that we Person class shown below available to us. Person has the instance variables name, age, weight and height. It also has methods to calculate, among other things, body mass index.
 
 
 <!-- ```java
@@ -156,7 +156,7 @@ public class Person {
 
 <!-- Mitä oikein tapahtuu kun olio luodaan? -->
 
-Precisely what happens when a new object is created?
+What precisely happens when a new object is created?
 
 
 <!-- ```java
@@ -170,12 +170,12 @@ Person joan = new Person("Joan Ball");
 
 <!-- Konstruktorikutsun `new` yhteydessä tapahtuu monta asiaa. Ensin tietokoneen muistista varataan tila oliomuuttujille. Tämän jälkeen oliomuuttujiin asetetaan oletus- tai alkuarvot (esimerkiksi `int`-tyyppisten muuttujien arvoksi tulee 0). Lopulta suoritetaan konstruktorissa oleva lähdekoodi. -->
 
-Calling a constructor with the command `new` causes several things to happen. First, space is reserved in the computer memory for storing object variables. Then default or initial values are set to object variables (e.g. an `int` type variable receives an initial value of 0). Lastly, the source code in the constructor is executed.
+A constructor call with `new` causes several things to happen. Firstly, space is reserved in computer memory for instance variables. Default or initial values are then assigned to the instance variables (for instance, an `int` type variable receives an initial value of 0). Finally, the source code in the constructor is executed.
 
 
 <!-- Konstruktorikutsu palauttaa viitteen olioon. **Viite** on tieto olioon liittyvien tietojen paikasta. -->
 
-A constructor call returns a reference to an object. A **reference** is information about the location of object data.
+A constructor call returns a reference to an object. This **reference** contains information about the location of data related to the object.
 
 
 <img src="../img/drawings/olio-joan.png"/>
@@ -183,16 +183,17 @@ A constructor call returns a reference to an object. A **reference** is informat
 
 <!-- Muuttujan arvoksi asetetaan siis viite, eli tieto olioon liittyvien tietojen paikasta. Yllä oleva kuva paljastaa myös sen, että merkkijonot -- kuten henkilömme nimi -- ovat myös olioita. -->
 
-So the value of the variable is set to be a reference, i.e. knowledge about the location of related object data. The image above also reveals that strings -- the name of our example person, for instance -- are objects, too.
+As such, the value that gets assigned to the variable is a reference, i.e., a piece of information pointing to the data related to the given object. The image above also reveals to us that strings -- such as the name of our person -- are objects as well.
 
 <!-- ## Viittaustyyppisen muuttujan arvon asettaminen kopioi viitteen -->
 
-## Assigning a reference type variable copies the reference
+## Copying of Reference When Assigning to a Reference Variable
+
 
 
 <!-- Lisätään ohjelmaan `Henkilo`-tyyppinen muuttuja `ball` ja annetaan sille alkuarvoksi `joan`. Mitä nyt tapahtuu? -->
 
-Let's add a `Person` type variable called `ball` into the program, and assign `joan` as its initial value. What happens then?
+Let's introduce a `Person` type variable called `ball` into our program and assign `joan` as its initial value. What happens then?
 
 
 <!-- ```java
@@ -211,7 +212,7 @@ Person ball = joan;
 
 <!-- Lause `Henkilo ball = joan;` luo uuden henkilömuuttujan `ball`, jonka arvoksi kopioidaan muuttujan `joan` arvo. Tämä saa aikaan sen, että `ball` viittaa samaan olioon kuin `joan`. -->
 
-The statement `Person ball = joan;` creates a new Person variable `ball`, and copies the value of the variable `joan` as its value. As a result, `ball` refers to the same object as `joan`.
+The statement `Person ball = joan;` creates a new Person variable `ball` and copies the value of the variable `joan` as its value. As a result, `ball` refers to the same object as `joan`.
 
 
 <img src="../img/drawings/olio-joan-ja-ball.png"/>
@@ -219,7 +220,7 @@ The statement `Person ball = joan;` creates a new Person variable `ball`, and co
 
 <!-- Tarkastellaan samaa esimerkkiä hieman pidemmälle. -->
 
-Let's inspect the same example a little more thoroughly.
+Let's inspect the same example more thoroughly.
 
 
 <!-- ```java
@@ -260,12 +261,12 @@ Joan Ball, age 2 years
 
 <!-- Joan Ball -- eli henkilöolio, johon viite muuttujassa `joan` osoittaa -- on alussa 0-vuotias. Tämän jälkeen muuttujaan `ball` asetetaan (eli kopioidaan) muuttujan `joan` arvo. Henkilöoliota `ball` vanhennetaan kaksi vuotta ja sen seurauksena Joan Ball vanhenee! -->
 
-Joan Ball -- i.e. the Person object that the reference in the `joan` variable points at -- starts as 0 years old. After this the value of the `joan` variable is assigned (so copied) to the `ball` variable. The Person object `ball` is aged by two years, and Joan Ball ages as a consequence!
+Joan Ball -- i.e., the Person object that the reference in the `joan` variable points to -- starts as 0 years old. The value of the `joan` variable is then assigned (i.e., copied) to the `ball` variable. The Person object `ball` is aged by two years and Joan Ball ages as a consequence!
 
 
 <!-- Olion sisäinen tila ei kopioidu muuttujan arvoa asetettaessa. Lauseessa `Henkilo ball = joan;` ei luoda uutta oliota -- muuttujan ball arvoksi asetetaan kopio muuttujan joan arvosta, eli viite olioon. -->
 
-An object's internal state is not copied when a variable's value is assigned. A new object is not being created in the statement `Person ball = joan;` -- the value of the variable ball is assigned to be the copy of  joan's value, i.e. a reference to an object.
+An object's internal state isn't copied during variable assignment. The `Person ball = joan;` statement doesn't create a new object -- a copy of `joan`'s value, i.e., a reference to an object, is assigned as the value of the `ball` variable
 
 
 <img src="../img/drawings/olio-joan-ja-ball-2.png"/>
@@ -273,7 +274,7 @@ An object's internal state is not copied when a variable's value is assigned. A 
 
 <!-- Seuraavassa esimerkkiä on jatkettu siten, että `joan`-muuttujaa varten luodaan uusi olio, jonka viite asetetaan muuttujan arvoksi. Muuttuja `ball` viittaa yhä aiemmin luotuun olioon. -->
 
-Next, the example is continued so that a new object is created for the `joan` variable, and a reference to it is assigned as the value of the variable. The variable `ball` still refers to the object that we created earlier.
+Next, the example is extended so that a new object is created for the variable `joan`  and a reference to it is assigned to the variable. The variable `ball` still refers to the object that we created earlier.
 
 <!-- ```java
 Henkilo joan = new Henkilo("Joan Ball");
@@ -328,19 +329,19 @@ Joan B., age 0 years
 
 <!-- Muuttujassa `joan` on siis alussa viite yhteen olioon, mutta lopussa sen arvoksi on kopioitu toisen muuttujan viite. Seuraavassa kuva tilanteesta viimeisen koodirivin jälkeen. -->
 
-So in the beginning the variable `joan` contains a reference to one object, but in the end a reference to another object has been copied as its value. Here is a picture of the situation after the last line of code.
+Initially, the variable `joan` contains a reference to one object, but another variable's reference is assigned to it in the end. Here's an image of the situation after the last line of code.
 
 <img src="../img/drawings/olio-joan-ja-ball-3.png"/>
 
 
 <!-- ## Viittaustyyppisen muuttujan arvo `null` -->
 
-## `null` value of a reference variable
+## The `null` Value of a Reference Variable
 
 
 <!-- Jatketaan vielä esimerkkiä asettamalla viittaustyyppisen muuttujan `ball` arvoksi `null`, eli viite "ei mihinkään". Viitteen "ei mihinkään" (eli `null`-viitteen voi asettaa minkä tahansa viittaustyyppisen muuttujan arvoksi. -->
 
-Let's extend the example further by setting  the value of the reference variable `ball` to `null`, i.e. a reference "to nothing". The `null` reference can be set as the value of any reference type variable.
+Let's extend the example even further by setting the value of the reference variable `ball` to `null`, i.e., to point "to nothing". Any reference variable can be set to point at nothing by assigning `null` to them.
 
 
 <!-- ```java
@@ -384,12 +385,12 @@ The situation of the program after the last line is depicted below.
 
 <!-- Olioon, jonka nimi on Joan Ball, ei enää viittaa kukaan. Oliosta on siis tullut "roska". Java-ohjelmointikielessä ohjelmoijan ei tarvitse huolehtia ohjelman käyttämästä muistista. Javan automaattinen roskienkerääjä käy siivoamassa roskaksi joutuneet oliot aika ajoin. Jos automaattista roskien keruuta ei tapahtuisi, jäisivät roskaksi joutuneet oliot varaamaan muistia ohjelman suorituksen loppuun asti. -->
 
-The object whose name is Joan Ball is referred to by nobody. In other words, the object has become "garbage". In the Java programming language the programmer need not worry about the program's memory use. From time to time, the automatic garbage collector of the Java language cleans up the objects that have become garbage. If the garbage collection did not happen, the garbage objects would reserve a memory location until the end of the program execution.
+The object named Joan Ball is no longer reference by nobody. In other words, it has become "garbage". In Java, the programmer doesn't need to worry about the program's memory use. Java's automatic garbage collector cleans up the objects that have become garbage every now and then. If garbage collection did not happen, garbage objects would continue occupying space in memory until the program finishes executing.
 
 
 <!-- Kokeillaan vielä mitä käy kun yritämme tulostaa muuttujaa, jonka arvona on viite "ei mihinkään" eli `null`. -->
 
-Let's see what happens when we try to print a variable that references "nothing" i.e. `null`.
+Let's see what happens when we try to print a variable that references "nothing" i.e., `null`.
 
 
 <!-- ```java
@@ -447,7 +448,7 @@ null
 
 <!-- Viitteen `null` tulostus tulostaa "null". Entäpä jos yritämme kutsua ei mihinkään viittaavan olion metodia, esimerkiksi metodia `vanhene`: -->
 
-Printing a `null` reference prints "null". How about if we were to try and call a method, say `growOlder`, on an object that refers to nothing:
+Printing a `null` reference prints "null". What if we were to try and call a method, say `growOlder`, on an object that doesn't refer to anything:
 
 
 <!-- ```java
@@ -488,12 +489,12 @@ Joan Ball, age 0 years
 
 <!-- Käy huonosti. Tämä on ehkä ensimmäinen kerta kun näet tekstin **NullPointerException**. Ohjelmassa tapahtuu virhe, joka liittyy siihen, että olemme kutsuneet ei mihinkään viittaavan muuttujan metodia. -->
 
-Bad things follow. This could be the first time you have seen the text **NullPointerException**. In the course of the program, there occured an error indicating that we called a method on a variable that refers to nothing.
+It doesn't go well. This may be the first time you've encountered the text **NullPointerException**. An error occurred in the program that relates to calling a  method on a variable that doesn't point to anything.
 
 
 <!-- Voimme luvata, että tulet näkemään edellisen virheen vielä uudelleen. Tällöin ensimmäinen askel on etsiä muuttujia, joiden arvona saattaisi olla `null`. Virheilmoitus on onneksi myös hyödyllinen: se kertoo millä rivillä virhe tapahtuu. Kokeile vaikka itse! -->
 
-We promise that this is not the last time you will encounter the previous error. When you do, the first step is to look for variables whose value could be `null`. Fortunately, the error message is useful: it tells which row caused the error. Try it out yourself!
+We can promise that this is not the last time you'll encounter the previous error. When you do, first look for variables whose value could be `null`. Fortunately for us, the error message is useful - it tells us which row caused the error. Try it out for yourself!
 
 
 <!-- <programming-exercise name='NullPointerException' tmcname='osa05-Osa05_07.NullPointerException'> -->
@@ -503,7 +504,7 @@ We promise that this is not the last time you will encounter the previous error.
 
 <!-- Toteuta ohjelma, jonka suorittaminen aiheuttaa virheen NullPointerException. Virheen tulee tapahtua heti kun ohjelma suoritetaan -- älä siis esimerkiksi lue käyttäjältä syötettä. -->
 
-Implement a program that causes the NullPointerException error. The error should occur directly after starting the program -- don't wait to read input from the user, for instance.
+Implement a program that causes a NullPointerException error. The error should happen straight after the program has started -- i.e., don't wait until you've read user input, for example.
 
 </programming-exercise>
 
@@ -848,7 +849,7 @@ Development environments can help the programmer. If you have created object var
 
 <!-- Mene luokan koodilohkon sisäpuolelle mutta kaikkien metodien ulkopuolelle ja paina yhtä aikaa ctrl ja välilyönti. Jos luokallasi on esim. oliomuuttuja `saldo`, tarjoaa NetBeans mahdollisuuden generoida oliomuuttujalle getteri- ja setterimetodit sekä konstruktorin joka asettaa oliomuuttujalle alkuarvon. -->
 
-Go inside the code block of the class, but outside of all the methods, and simultaneously press ctrl and space. If your class has e.g. an object variable `balance`, NetBeans offers the option to generate the getter and setter methods for the object variable, and a constuctor that assigns an initial value for that variable.
+Go inside the code block of the class, but outside of all the methods, and simultaneously press ctrl and space. If your class has e.g., an object variable `balance`, NetBeans offers the option to generate the getter and setter methods for the object variable, and a constuctor that assigns an initial value for that variable.
 
 
 <!-- Joillain Linux-koneilla, kuten Kumpulassa olevilla koneilla, tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti. -->
@@ -867,7 +868,7 @@ On some Linux machines, like on the ones on the Kumpula campus (University of He
 
 <!-- Tehtäväpohjassasi on valmiina jo tutuksi tullut luokka `Henkilo` sekä runko luokalle `Kasvatuslaitos`. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan Henkilö koodiin ei tehtävässä ole tarkoitus koskea! -->
 
-In the exercise base there is the class `Person`, which we are already quite familiar with. There is also an outline for the class `HealthStation`. Health station objects process people in different ways, they e.g. weigh and feed people. In this exercise we will construct a health station. The code of the Person class should not be modified in this exercise!
+In the exercise base there is the class `Person`, which we are already quite familiar with. There is also an outline for the class `HealthStation`. Health station objects process people in different ways, they e.g., weigh and feed people. In this exercise we will construct a health station. The code of the Person class should not be modified in this exercise!
 
 
 <!-- <h2>Henkilöiden punnitseminen</h2> -->
@@ -2729,7 +2730,7 @@ public class SimpleDate {
 
 <!-- Vastaavan vertailutoiminnallisuuden rakentaminen onnistuu myös Henkilö-olioille. Alla vertailu on toteutettu Henkilo-oliolle, jolla ei ole erillista Paivays-oliota. Huomaa, että henkilöiden nimet ovat merkijonoja (eli olioita), joten niiden vertailussa käytetään equals-metodia. -->
 
-Building a similar comparison functionality is possible for Person objects, too. Below, the comparison has been implemented for Person objects that don't have a separate SimpleDate object. Notice that the names of people are strings (i.e. objects), so we use the equals method for comparing them.
+Building a similar comparison functionality is possible for Person objects, too. Below, the comparison has been implemented for Person objects that don't have a separate SimpleDate object. Notice that the names of people are strings (i.e., objects), so we use the equals method for comparing them.
 
 
 <!-- ```java
@@ -3499,7 +3500,7 @@ We have seen methods return boolean values, numbers, and strings. Easy to guess,
 <!-- Seuraavassa esimerkissä on yksinkertainen laskuri, jolla on metodi `kloonaa`. Metodin avulla laskurista voidaan tehdä klooni, eli uusi laskurio-olio, jolla on luomishetkellä sama arvo kuin kloonattavalla laskurilla: -->
 
 
-In the next example we present a simple counter that has the method `clone`. The method can be used to create a clone of the counter; i.e. a new counter object that has the same value at the time of its creation as the counter that is being cloned.
+In the next example we present a simple counter that has the method `clone`. The method can be used to create a clone of the counter; i.e., a new counter object that has the same value at the time of its creation as the counter that is being cloned.
 
 <!-- ```java
 public Laskuri {
@@ -4001,7 +4002,7 @@ public class Money {
 
 <!-- Määrittelyssä pistää silmään oliomuuttujien määrittelyn yhteydessä käytetty sana `final`, tällä saadaan aikaan se, että oliomuuttujien arvoa ei pystytä muuttamaan sen jälkeen kun ne on konstruktorissa asetettu. Raha-luokan oliot ovatkin muuttumattomia eli *immutaabeleita*, eli jos halutaan esim. kasvattaa rahamäärää, on luotava uusi olio, joka kuvaa kasvatettua rahasummaa. -->
 
-The word `final` used in the definition of object variables catches attention. The result of this word is that the values of these object variables cannot be modified after they have been set in the constructor. The objects of Money class are unchangeable so **immutable** -- if we want to e.g. increase the amount of money, we must create a new object to represent that new amount of money.
+The word `final` used in the definition of object variables catches attention. The result of this word is that the values of these object variables cannot be modified after they have been set in the constructor. The objects of Money class are unchangeable so **immutable** -- if we want to e.g., increase the amount of money, we must create a new object to represent that new amount of money.
 
 
 <!-- Luomme seuraavassa muutaman operaation rahojen käsittelyyn. -->
