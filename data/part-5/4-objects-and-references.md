@@ -512,16 +512,16 @@ Implement a program that causes a NullPointerException error. The error should h
 
 <!-- ##  Olio metodin s to use a Date class. We could use the classname Date, but for the sake of avoiding confusion with the similarly named existing Java class, we will use SimpleDate here.parametrina -->
 
-## Object as a method parameter
+## Object as a Method Parameter
 
 
 <!-- Olemme nähneet että metodien parametrina voi olla alkeis- ja viittaustyyppisiä muuttujia. Koska oliot ovat viittaustyyppisiä muuttujia, voi metodin parametriksi määritellä minkä tahansa tyyppisen olion. Demonstroidaan tätä esimerkillä. -->
 
-We have seen both primitive and reference variables act as method parameters. Since objects are reference variables, any type of object can be defined to be a method parameter. Let's take a look at a practical demonstration.
+We've seen both primitive and reference variables act as method parameters. Since objects are reference variables, we can define any type of objects as a method parameter. Let's take a look at a practical demonstration.
 
 <!-- Huvipuiston laitteisiin hyväksytään henkilöitä, joiden pituus ylittää annetun rajan. Kaikissa laitteissa raja ei ole sama. Tehdään huvipuiston laitetta vastaava luokka. Olioa luotaessa konstruktorille annetaan parametriksi laitteen nimi sekä pienin pituus, jolla laitteeseen pääsee. -->
 
-Amusement park rides only permit people who are taller than a certain height. The limit is not the same for all attractions. Let's create a class representing an amusement park ride. When creating a new object, the constructor receives as parameters the name of the ride, and the smallest height that permits entry to the ride.
+Amusement park rides only permit people on them whose heights exceed a given requirement, which is not the same across all rides. Let's create a class that represents an amusement ride. When a new object is instantiated, the constructor receives as its parameters both the ride's name, and the minimum height that permits entry to the ride.
 
 
 
@@ -542,28 +542,28 @@ public class Huvipuistolaite {
 ``` -->
 
 ```java
-public class AmusementParkRide {
+public class AmusementRide {
     private String name;
-    private int lowestHeight;
+    private int minHeight;
 
-    public AmusementParkRide(String name, int lowestHeight) {
+    public AmusementRide(String name, int minHeight) {
         this.name = name;
-        this.lowestHeight = lowestHeight;
+        this.minHeight = minHeight;
     }
 
     public String toString() {
-        return this.name + ", minimum height: " + this.lowestHeight;
+        return this.name + ", minimum height: " + this.minHeight;
     }
 }
 ```
 
 <!-- Tehdään seuraavaksi metodi, jonka avulla voidaan tarkastaa pääseekö tietty henkilö laitteen kyytiin, eli onko henkilö tarpeeksi pitkä. Metodi palauttaa `true` jos parametrina annettu henkilö hyväksytään, `false` jos ei. -->
 
-Then let's write a method that can be used to check if a person is allowed to enter the ride, so if they are tall enough. The method returns `true` if the person given as the parameter is permitted access, and `false` otherwise.
+Let's now write a method that can be used to check whether or not a person is allowed to enter the ride, i.e., whether they're tall enough. The method returns `true` if the person given as a parameter is permitted, and `false` otherwise.
 
 <!-- Alla oletetaan, että henkilöllä metodi ``public int getPituus()`, joka palauttaa henkilön pituuden. -->
 
-Below, it is assumed that Person has the method `public int getHeight()` that returns the height of the person.
+We assume below that Person has the method `public int getHeight()`, which returns the height of the person.
 
 
 <!-- ```java
@@ -591,17 +591,17 @@ public class Huvipuistolaite {
 ``` -->
 
 ```java
-public class AmusementParkRide {
+public class AmusementRide {
     private String name;
-    private int lowestHeight;
+    private int minHeight;
 
-    public AmusementParkRide(String name, int lowestHeight) {
+    public AmusementRide(String name, int minHeight) {
         this.name = name;
-        this.lowestHeight = lowestHeight;
+        this.minHeight = minHeight;
     }
 
-    public boolean allowedToRide(Person person) {
-        if (person.getHeight() < this.lowestHeight) {
+    public boolean allowedOn(Person person) {
+        if (person.getHeight() < this.minHeight) {
             return false;
         }
 
@@ -609,18 +609,18 @@ public class AmusementParkRide {
     }
 
     public String toString() {
-        return this.name + ", minimum height: " + this.lowestHeight;
+        return this.name + ", minimum height: " + this.minHeight;
     }
 }
 ```
 
 <!-- Huvipuistolaite-olion metodille `paaseeKyytiin` annetaan siis parametrina `Henkilo`-olio. Kuten aiemmin, muuttujan arvo -- eli tässä viite -- kopioituu metodin käyttöön. Metodissa käsitellään kopioitua viitettä ja kutsutaan parametrina saadun henkilön metodia `getPituus`. -->
 
-So the method `allowedToRide` of an AmusementParkRide object is given a `Person` object as a parameter. Like earlier, the value of the variable -- in this case, a reference -- is copied for the method to use. The method handles a copied reference, and it calls the `getHeight` method of the person passed as a parameter.
+The `allowedOn` method of an AmusementRide object is passed a `Person` object as a parameter. Just as earlier, the value of the variable -- in this case, a reference -- is copied for the method's use. The copied reference is processed within the method, and the `getHeight` method of the person passed as a parameter is called.
 
 <!-- Seuraavassa testipääohjelma jossa huvipuistolaitteen metodille annetaan ensin parametriksi henkilöolio `matti` ja sen jälkeen henkilöolio `juhana`: -->
 
-Below is an example main program where the amusement park ride method is called twice: first the supplied parameter is a person object `matt`, and then a person object `jasper`:
+Below we see an example of a main program where the amusement ride's method is called twice: first with the person object `matti` as an arugment, followed by the person object `juhana`:
 
 
 <!-- ```java
@@ -650,26 +650,26 @@ System.out.println(hurjakuru);
 ``` -->
 
 ```java
-Person matt = new Person("Matt");
-matt.setWeight(86);
-matt.setHeight(180);
+Person matti = new Person("Matti");
+matti.setWeight(86);
+matti.setHeight(180);
 
-Person jasper = new Person("Jasper");
-jasper.setWeight(34);
-jasper.setHeight(132);
+Person juhana = new Person("Juhana");
+juhana.setWeight(34);
+juhana.setHeight(132);
 
-AmusementParkRide waterTrack = new AmusementParkRide("Water track", 140);
+AmusementRide waterTrack = new AmusementRide("Water track", 140);
 
-if (waterTrack.allowedToRide(matt)) {
-    System.out.println(matt.getName() + " may enter the ride");
+if (waterTrack.allowedOn(matti)) {
+    System.out.println(matti.getName() + " may get on the ride");
 } else {
-    System.out.println(matt.getName() + " may not enter the ride");
+    System.out.println(matti.getName() + " may not get on the ride");
 }
 
-if (waterTrack.allowedToRide(jasper)) {
-    System.out.println(jasper.getName() + " may enter the ride");
+if (waterTrack.allowedOn(juhana)) {
+    System.out.println(juhana.getName() + " may get on the ride");
 } else {
-    System.out.println(jasper.getName() + " may not enter the ride");
+    System.out.println(juhana.getName() + " may not get on the ride");
 }
 
 System.out.println(waterTrack);
@@ -689,19 +689,19 @@ Hurjakuru, pituusalaraja: 140
 
 <sample-output>
 
-Matt may enter the ride
-Jasper may not enter the ride
+Matti may get on the ride
+Juhana may not get on the ride
 Water track, minimum height: 140
 
 </sample-output>
 
 <!-- Entäpä jos haluaisimme tietää kuinka moni on päässyt laitteen kyytiin? -->
 
-What if we wanted to know how many people have taken the ride?
+What if we wanted to know how many people have gotten on the ride?
 
 <!-- Lisätään huvipuistolaitteelle oliomuuttuja, joka pitää kirjaa kyytiin päässeiden henkilöiden lukumäärästä. -->
 
-Let's add an object variable to the amusement park ride. It keeps track of the number of people that were permitted to enter.
+Let's add an instance variable to the amusement ride that keeps track of the number of people that have been allowed on.
 
 
 <!-- ```java
@@ -733,19 +733,19 @@ public class Huvipuistolaite {
 ``` -->
 
 ```java
-public class AmusementParkRide {
+public class AmusementRide {
     private String name;
-    private int lowestHeight;
+    private int minHeight;
     private int visitors;
 
-    public AmusementParkRide(String name, int lowestHeight) {
+    public AmusementRide(String name, int minHeight) {
         this.name = name;
-        this.lowestHeight = lowestHeight;
+        this.minHeight = minHeight;
         this.visitors = 0;
     }
 
-    public boolean allowedToRide(Person person) {
-        if (person.getHeight() < this.lowestHeight) {
+    public boolean allowedOn(Person person) {
+        if (person.getHeight() < this.minHeight) {
             return false;
         }
 
@@ -754,7 +754,7 @@ public class AmusementParkRide {
     }
 
     public String toString() {
-        return this.name + ", minimum height: " + this.lowestHeight +
+        return this.name + ", minimum height: " + this.minHeight +
             ", visitors: " + this.visitors;
     }
 }
@@ -762,7 +762,7 @@ public class AmusementParkRide {
 
 <!-- Nyt aiemmin käyttämässämme esimerkkiohjelmassa pidetään kirjaa myös laitteen kävijöiden määrästä. -->
 
-Now the previously used example program also keeps track of the number of visitors who have experienced the ride.
+The previously introduced example program now also keeps track of the number of people who've experienced the ride.
 
 <!-- ```java
 Henkilo matti = new Henkilo("Matti");
@@ -791,26 +791,26 @@ System.out.println(hurjakuru);
 ``` -->
 
 ```java
-Person matt = new Person("Matt");
-matt.setWeight(86);
-matt.setHeight(180);
+Person matti = new Person("Matti");
+matti.setWeight(86);
+matti.setHeight(180);
 
-Person jasper = new Person("Jasper");
-jasper.setWeight(34);
-jasper.setHeight(132);
+Person juhana = new Person("Juhana");
+juhana.setWeight(34);
+juhana.setHeight(132);
 
-AmusementParkRide waterTrack = new AmusementParkRide("Water track", 140);
+AmusementRide waterTrack = new AmusementRide("Water track", 140);
 
-if (waterTrack.allowedToRide(matt)) {
-    System.out.println(matt.getName() + " may enter the ride");
+if (waterTrack.allowedOn(matti)) {
+    System.out.println(matti.getName() + " may get on the ride");
 } else {
-    System.out.println(matt.getName() + " may not enter the ride");
+    System.out.println(matti.getName() + " may not get on the ride");
 }
 
-if (waterTrack.allowedToRide(jasper)) {
-    System.out.println(jasper.getName() + " may enter the ride");
+if (waterTrack.allowedOn(juhana)) {
+    System.out.println(juhana.getName() + " may get on the ride");
 } else {
-    System.out.println(jasper.getName() + " may not enter the ride");
+    System.out.println(juhana.getName() + " may not get on the ride");
 }
 
 System.out.println(waterTrack);
@@ -830,8 +830,8 @@ Hurjakuru, pituusalaraja: 140, kävijöitä: 1
 
 <sample-output>
 
-Matt may enter the ride
-Jasper may not enter the ride
+Matti may get on the ride
+Juhana may not get on the ride
 Water track, minimum height: 140, visitors: 1
 
 </sample-output>
@@ -839,22 +839,22 @@ Water track, minimum height: 140, visitors: 1
 
 <!-- <text-box variant='hint' name='Konstruktorien, getterien ja setterien avustettu luominen'> -->
 
-<text-box variant='hint' name='Assisted creation of constructors, getters, and setters'>
+<text-box variant='hint' name='Tool-Assisted Creation of Constructors, Getters, and Setters'>
 
 
 <!-- Ohjelmointiympäristöt osaavat auttaa ohjelmoijaa. Jos luokalle on määriteltynä oliomuuttujat, onnistuu konstruktorien, getterien ja setterien luominen lähes automaattisesti. -->
 
-Development environments can help the programmer. If you have created object variables for a class, creating constructors, getters, and setters can be done almost automatically.
+Development environments know how to help the programmer. Once instance variables have been created for a class, constructors, getters, and setters can be created almost automatically.
 
 
 <!-- Mene luokan koodilohkon sisäpuolelle mutta kaikkien metodien ulkopuolelle ja paina yhtä aikaa ctrl ja välilyönti. Jos luokallasi on esim. oliomuuttuja `saldo`, tarjoaa NetBeans mahdollisuuden generoida oliomuuttujalle getteri- ja setterimetodit sekä konstruktorin joka asettaa oliomuuttujalle alkuarvon. -->
 
-Go inside the code block of the class, but outside of all the methods, and simultaneously press ctrl and space. If your class has e.g., an object variable `balance`, NetBeans offers the option to generate the getter and setter methods for the object variable, and a constuctor that assigns an initial value for that variable.
+Go inside the code block of the class, but outside of all the methods, and simultaneously press ctrl and space. If your class has an instance variable `balance` for example, NetBeans offers the option to generate the getter and setter methods for the object variable, and a constructor that assigns an initial value for that variable.
 
 
 <!-- Joillain Linux-koneilla, kuten Kumpulassa olevilla koneilla, tämä saadaan aikaan painamalla yhtä aikaa ctrl, alt ja välilyönti. -->
 
-On some Linux machines, like on the ones on the Kumpula campus (University of Helsinki), this feature is triggered by simultaneously pressing ctrl, alt, and space.
+On some Linux machines, such as the ones at the Kumpula campus (University of Helsinki), this feature is triggered by simultaneously pressing ctrl, alt, and space.
 
 
 </text-box>
@@ -862,13 +862,13 @@ On some Linux machines, like on the ones on the Kumpula campus (University of He
 
 <!-- <programming-exercise name='Kasvatuslaitos (3 osaa)' tmcname='osa05-Osa05_09.Kasvatuslaitos'> -->
 
-<programming-exercise name='Health station (3 parts)' tmcname='part05-Part05_09.HealthStation'>
+<programming-exercise name='Health Station (3 parts)' tmcname='part05-Part05_09.HealthStation'>
 
 
 
 <!-- Tehtäväpohjassasi on valmiina jo tutuksi tullut luokka `Henkilo` sekä runko luokalle `Kasvatuslaitos`. Kasvatuslaitosoliot käsittelevät ihmisiä eri tavalla, esim. punnitsevat ja syöttävät ihmisiä. Rakennamme tässä tehtävässä kasvatuslaitoksen. Luokan Henkilö koodiin ei tehtävässä ole tarkoitus koskea! -->
 
-In the exercise base there is the class `Person`, which we are already quite familiar with. There is also an outline for the class `HealthStation`. Health station objects process people in different ways, they e.g., weigh and feed people. In this exercise we will construct a health station. The code of the Person class should not be modified in this exercise!
+In the exercise base there is a class `Person` that we're already quite familiar with. It also comes with a frame of the `HealthStation` class. Health station objects process people in different ways, e.g., by weighing and feeding them. In this exercise, we'll construct a health station. The code of the Person class should not be modified in this exercise!
 
 
 <!-- <h2>Henkilöiden punnitseminen</h2> -->
@@ -877,7 +877,7 @@ In the exercise base there is the class `Person`, which we are already quite fam
 
 <!-- Kasvatuslaitoksen luokkarungossa on valmiina runko metodille `punnitse`: -->
 
-In the outline of the Health station there is an outline for the method `weigh`:
+In the class body of the Health station there is an outline for the method `weigh`:
 
 <!-- ```java
 public class Kasvatuslaitos {
@@ -901,11 +901,11 @@ public class HealthStation {
 
 <!-- Metodi saa parametrina henkilön ja metodin on tarkoitus palauttaa kutsujalleen parametrina olevan henkilön paino. Paino selviää kutsumalla parametrina olevan henkilön `henkilo` sopivaa metodia. **Eli täydennä metodin koodi!** -->
 
-The method receives a person as a parameter, and it is meant to return to its caller the weight of that person. The weight information can be found by calling a suitable method of the person `person`. **So your task is to complete the code of the method!**
+The method receives a person as a parameter, and is meant to return the weight of that person to the method's caller. The weight can be found by calling a suitable method of the `person` parameter. **In other words, complete the method code!**
 
 <!-- Seuraavassa on pääohjelma jossa kasvatuslaitos punnitsee kaksi henkilöä: -->
 
-Here is a main program where a health station weight two people:
+Here is a main program where a health station weighs two people:
 
 <!-- ```java
 public static void main(String[] args) {
@@ -927,11 +927,11 @@ public static void main(String[] args) {
 
     HealthStation childrensHospital = new HealthInstitution();
 
-    Person ethan = new Person("Ethan", 1, 110, 7);
-    Person peter = new Person("Peter", 33, 176, 85);
+    Person eero = new Person("Eero", 1, 110, 7);
+    Person pekka = new Person("Pekka", 33, 176, 85);
 
-    System.out.println(ethan.getName() + " weight: " + childrensHospital.weigh(ethan) + " kilos");
-    System.out.println(peter.getName() + " weight: " + childrensHospital.weigh(peter) + " kilos");
+    System.out.println(eero.getName() + " weight: " + childrensHospital.weigh(eero) + " kilos");
+    System.out.println(pekka.getName() + " weight: " + childrensHospital.weigh(pekka) + " kilos");
 }
 ```
 
@@ -942,8 +942,8 @@ The output should be the following:
 
 <sample-output>
 
-Ethan's weight: 7 kilos
-Peter's weight: 85 kilos
+Eero's weight: 7 kilos
+Pekka's weight: 85 kilos
 
 </sample-output>
 
@@ -955,12 +955,12 @@ Peter's weight: 85 kilos
 
 <!-- Parametrina olevan olion tilaa on mahdollista muuttaa. Tee kasvatuslaitokselle metodi `public void syota(Henkilo henkilo)` joka kasvattaa parametrina olevan henkilön painoa yhdellä. -->
 
-It is possible to modify the state of the object that is received as a parameter. Write a method called `public void feed(Person person)` for the health station. It should increase the weight of the parameter person by one.
+It's possible to modify the state of the object received as a parameter. Write a method called `public void feed(Person person)` for the health station. It should increment the weight of the parameter person by one.
 
 
 <!-- Seuraavassa esimerkki, jossa henkilöt ensin punnitaan, ja tämän jälkeen neuvolassa syötetään eeroa kolme kertaa. Tämän jälkeen henkilöt taas punnitaan: -->
 
-Following is an example where people are weighed first, and then ethan is fed three times in the children's hospital. After this the people are weighed again:
+The following is an example where the people are weighed first, after which Eero is fed three times in the children's hospital. The people are then weighed again:
 
 <!-- ```java
 public static void main(String[] args) {
@@ -987,20 +987,20 @@ public static void main(String[] args) {
 public static void main(String[] args) {
     HealthStation childrensHospital = new HealthStation();
 
-    Person ethan = new Person("Ethan", 1, 110, 7);
-    Person peter = new Person("Peter", 33, 176, 85);
+    Person eero = new Person("Eero", 1, 110, 7);
+    Person pekka = new Person("Pekka", 33, 176, 85);
 
-    System.out.println(ethan.getName() + " weight: " + childrensHospital.weigh(ethan) + " kilos");
-    System.out.println(peter.getName() + " weight: " + childrensHospital.weigh(peter) + " kilos");
+    System.out.println(eero.getName() + " weight: " + childrensHospital.weigh(eero) + " kilos");
+    System.out.println(pekka.getName() + " weight: " + childrensHospital.weigh(pekka) + " kilos");
 
-    childrensHospital.feed(ethan);
-    childrensHospital.feed(ethan);
-    childrensHospital.feed(ethan);
+    childrensHospital.feed(eero);
+    childrensHospital.feed(eero);
+    childrensHospital.feed(eero);
 
     System.out.println("");
 
-    System.out.println(ethan.getName() + " weight: " + childrensHospital.weigh(ethan) + " kilos");
-    System.out.println(peter.getName() + " weight: " + childrensHospital.weigh(peter) + " kilos");
+    System.out.println(eero.getName() + " weight: " + childrensHospital.weigh(eero) + " kilos");
+    System.out.println(pekka.getName() + " weight: " + childrensHospital.weigh(pekka) + " kilos");
 }
 ```
 
@@ -1020,24 +1020,24 @@ Pekka paino: 85 kiloa
 
 <sample-output>
 
-Ethan weight: 7 kilos
-Peter weight: 85 kilos
+Eero weight: 7 kilos
+Pekka weight: 85 kilos
 
-Ethan weight: 10 kilos
-Peter weight: 85 kilos
+Eero weight: 10 kilos
+Pekka weight: 85 kilos
 
 </sample-output>
 
 
 <!-- <h2>Punnitusten laskeminen</h2> -->
 
-<h2>Counting weighings</h2>
+<h2>Counting Weighings</h2>
 
 
 
 <!-- Tee kasvatuslaitokselle metodi `public int punnitukset()` joka kertoo kuinka monta punnitusta kasvatuslaitos on ylipäätään tehnyt. *Huom! Tarvitset uuden oliomuuttujan punnitusten lukumäärän laskemiseen!* Testipääohjelma: -->
 
-Create a new method called `public int weighings()` for the health station. It should tell how many weighings the health station has performed. *NB! You will need a new object variable for counting the number of weighings!*. Test main program:
+Create a new method called `public int weighings()` for the health station. It should tell how many weighings the health station has performed. *NB! You will need a new object variable for counting the number of weighings!*. Here's the test main program:
 
 
 <!-- ```java
@@ -1070,20 +1070,20 @@ public static void main(String[] args) {
 
     HealthStation childrensHospital = new HealthInstitution();
 
-    Person ethan = new Person("Ethan", 1, 110, 7);
-    Person peter = new Person("Peter", 33, 176, 85);
+    Person eero = new Person("Eero", 1, 110, 7);
+    Person pekka = new Person("Pekka", 33, 176, 85);
 
     System.out.println("weighings performed: " + childrensHospital.weighings());
 
-    childrensHospital.weigh(ethan);
-    childrensHospital.weigh(peter);
+    childrensHospital.weigh(eero);
+    childrensHospital.weigh(pekka);
 
     System.out.println("weighings performed: " + childrensHospital.weighings());
 
-    childrensHospital.weigh(ethan);
-    childrensHospital.weigh(ethan);
-    childrensHospital.weigh(ethan);
-    childrensHospital.weigh(ethan);
+    childrensHospital.weigh(eero);
+    childrensHospital.weigh(eero);
+    childrensHospital.weigh(eero);
+    childrensHospital.weigh(eero);
 
     System.out.println("weighings performed: " + childrensHospital.weighings());
 }
@@ -1114,31 +1114,31 @@ weighings performed: 6
 
 <!-- <programming-exercise name='Maksukortti ja Kassapääte (4 osaa)' tmcname='osa05-Osa05_10.MaksukorttiJaKassapaate'> -->
 
-<programming-exercise name='Card payments (4 sections)' tmcname='part05-Part05_10.CardPayments'>
+<programming-exercise name='Card Payments (4 sections)' tmcname='part05-Part05_10.CardPayments'>
 
 
 
 <!-- <h2>"Tyhmä" Maksukortti</h2> -->
 
-<h2>"Dumb" payment card</h2>
+<h2>"Dumb" Payment Card</h2>
 
 
 
 <!-- Teimme edellisessä osassa luokan Maksukortti. Kortilla oli metodit edullisesti ja maukkaasti syömistä sekä rahan lataamista varten. -->
 
-In a previous part we created a class called PaymentCard. The card had methods for eating affordably and heartily, and also for adding money to the card.
+In the previous part we created a PaymentCard class. The card had methods for eating affordably and heartily, and also for adding money to the card.
 
 <!-- Edellisen osan tyylillä tehdyssä Maksukortti-luokassa oli kuitenkin ongelma. Kortti tiesi lounaiden hinnan ja osasi sen ansiosta vähentää saldoa oikean määrän. Entä kun hinnat nousevat? Tai jos myyntivalikoimaan tulee uusia tuotteita? Hintojen muuttaminen tarkoittaisi, että kaikki jo käytössä olevat kortit pitäisi korvata uusilla, uudet hinnat tuntevilla korteilla. -->
 
-However, there was a problem with the PaymentCard class that is implemented in this fashion. The card knew the prices of the different lunches, and therefore was able to decrease the balance by the proper amount. What about if the prices are raised? Or new items are added to the list of offered products? A change in the pricing would mean that all the existing cards would have to be replaced with new cards that are aware of the new prices.
+However, there was a problem with the previous part's implementation of the PaymentCard class. The card knew the prices of the lunches, and could therefore decrease the balance by the correct amount. What if the prices were raised? Or new items were added to the list of products on offer? A change in the pricing would mean that all the existing cards would have to be replaced with new cards that know of the new prices.
 
 <!-- Parempi ratkaisu on tehdä kortit "tyhmiksi", hinnoista ja myytävistä tuotteista tietämättömiksi pelkän saldon säilyttäjiksi. Kaikki äly kannattaakin laittaa erillisiin olioihin, kassapäätteisiin. -->
 
-An improved solution is to make the cards "dumb"; unaware of the prices and products that are sold, and only keeping track of their balance. All the intelligence is better placed in separate objects, payment terminals.
+An improved solution would be to make the cards "dumb"; unaware of the prices and offerings, only keeping track of the balance. All intelligent logic should be placed in separate objects - payment terminals.
 
 <!-- Toteutetaan ensin Maksukortista "tyhmä" versio. Kortilla on ainoastaan metodit saldon kysymiseen, rahan lataamiseen ja rahan ottamiseen. Täydennä alla (ja tehtäväpohjassa) olevaan luokkaan metodin `public boolean otaRahaa(double maara)` ohjeen mukaan: -->
 
-Let's first implement the "dumb" version of the PaymentCard. The card only has methods for asking for the balance, adding money, and taking money. Complete the method `public boolean takeMoney(double amount)` in the class below (and found in the exercise template), using the following as a guide:
+Let's first implement a "dumb" version of the PaymentCard. The card only has methods for requesting the balance, depositing money and withdrawing money. Complete the `public boolean withdraw(double amount)` method in the class below (and found in the exercise template), using the following as a guide:
 
 
 <!-- ```java
@@ -1176,11 +1176,11 @@ public class PaymentCard {
         return this.balance;
     }
 
-    public void addMoney(double increase) {
-        this.balance = this.balance + increase;
+    public void deposit(double amount) {
+        this.balance = this.balance + amount;
     }
 
-    public boolean takeMoney(double amount) {
+    public boolean withdraw(double amount) {
         // implement the method so that it only takes money from the card if
         // the balance is at least the amount parameter.
         // returns true if successful and false otherwise
@@ -1212,23 +1212,23 @@ public class Paaohjelma {
 ```java
 public class MainProgram {
     public static void main(String[] args) {
-        PaymentCard petesCard = new PaymentCard(10);
+        PaymentCard pekkasCard = new PaymentCard(10);
 
-        System.out.println("money " + petesCard.balance());
-        boolean wasSuccessful = petesCard.takeMoney(8);
-        System.out.println("successfully withdrew: " + wasSuccessful);
-        System.out.println("money " + petesCard.balance());
+        System.out.println("money " + pekkasCard.balance());
+        boolean wasSuccessful = pekkasCard.withdraw(8);
+        System.out.println("withdrawal successful: " + wasSuccessful);
+        System.out.println("money " + pekkasCard.balance());
 
-        wasSuccessful = petesCard.takeMoney(4);
-        System.out.println("successfully withdrew: " + wasSuccessful);
-        System.out.println("money " + petesCard.balance());
+        wasSuccessful = pekkasCard.withdraw(4);
+        System.out.println("withdrawal successful: " + wasSuccessful);
+        System.out.println("money " + pekkasCard.balance());
     }
 }
 ```
 
 <!-- Tulostuksen kuuluisi olla seuraavanlainen -->
 
-The output should be like below
+The output should resemble the following
 
 <!-- <sample-output>
 
@@ -1243,9 +1243,9 @@ rahaa 2.0
 <sample-output>
 
 money 10.0
-successfully took: true
+withdrawal successful: true
 money 2.0
-successfully took: false
+withdrawal successful: false
 money 2.0
 
 </sample-output>
@@ -1253,17 +1253,17 @@ money 2.0
 
 <!-- <h2>Kassapääte ja käteiskauppa</h2> -->
 
-<h2>Payment terminal and cash</h2>
+<h2>Payment Terminal and Cash</h2>
 
 
 <!-- Unicafessa asioidessa asiakas maksaa joko käteisellä tai maksukortilla. Myyjä käyttää kassapäätettä kortin velottamiseen ja käteismaksujen hoitamiseen. Tehdään ensin kassapäätteestä käteismaksuihin sopiva versio. -->
 
-When visiting a student cafeteria, the customer pays either with cash or with a payment card. The cashier uses a payment terminal to charge the card or to process the cash payment. First, let's create a terminal that's suitable for cash payments.
+At the student cafeteria, the customer either pays with cash or card. The cashier uses a payment terminal to charge the card or to process the cash payment. Let's begin by creating a terminal that's suitable for cash payments.
 
 
 <!-- Kassapäätteen runko. Metodien kommentit kertovat halutun toiminnallisuuden: -->
 
-The outline of the payment terminal. The comments inside the methods tell the wanted functionality:
+The outline of the payment terminal. The comments inside the methods lay out the desired functionality:
 
 
 <!-- ```java
@@ -1296,12 +1296,12 @@ public class Kassapaate {
 
 ```java
 public class PaymentTerminal {
-    private double money;  // amount of cash
-    private int affordableMeals; // number of sold affordable meals
-    private int heartyMeals;  // number of sold hearty meals
+    private double cash;  // amount of cash
+    private int affordableMeals; // number of affordable meals sold
+    private int heartyMeals;  // number of hearty meals sold
 
     public PaymentTerminal() {
-        // register initially has 1000 euros of money
+        // register initially has 1000 euros of cash
     }
 
     public double eatAffordably(double payment) {
@@ -1317,14 +1317,14 @@ public class PaymentTerminal {
     }
 
     public String toString() {
-        return "money: " + money + ", number of sold afforable meals: " + affordableMeals + ", number of sold hearty meals: " + heartyMeals;
+        return "cash: " + cash + ", number of afforable meals sold: " + affordableMeals + ", number of hearty meals sold: " + heartyMeals;
     }
 }
 ```
 
 <!-- Kassapäätteessä on aluksi rahaa 1000 euroa. Toteuta yllä olevan rungon metodit ohjeen ja alla olevan pääohjelman esimerkkitulosteen mukaan toimiviksi. -->
 
-The terminal starts with 1000 euros in it. Implement the methods so they work correctly, using the basis above and the example prints of the main program below.
+The terminal starts with 1000 euros in it. Implement the methods correctly based on the instructions and the example prints of the main program below.
 
 <!-- ```java
 public class Paaohjelma {
@@ -1378,7 +1378,7 @@ kassassa rahaa 1009.3 edullisia lounaita myyty 2 maukkaita lounaita myyty 1
 remaining change: 7.5
 remaining change: 2.5
 remaining change: 0.0
-money: 1009.3, number of sold afforable meals: 2, number of sold hearty meals: 1
+cash: 1009.3, number of affordable meals sold: 2, number of hearty meals sold: 1
 
 </sample-output>
 
@@ -1503,19 +1503,19 @@ remaining change: 7.5
 there was enough money: true
 there was enough money: false
 there was enough money: true
-money: 1002.5, number of sold afforable meals: 2, number of sold hearty meals: 1
+money: 1002.5, number of affordable meals sold: 2, number of hearty meals sold: 1
 
 </sample-output>
 
 
 <!-- <h2>Rahan lataaminen</h2> -->
 
-<h2>Adding money</h2>
+<h2>Depositing Money</h2>
 
 
 <!-- Lisätään vielä kassapäätteelle metodi jonka avulla kortille voidaan ladata lisää rahaa. Muista, että rahan lataamisen yhteydessä ladattava summa viedään kassapäätteeseen. Metodin runko: -->
 
-Let's create a method for the terminal that can be used to add money to a payment card. Recall that the payment that is received when adding money to the card is stored in the register. The basis for the method:
+Let's create a method for the terminal that can be used to add money to a payment card. Remember that when money is deposited it goes in the register. The template for the method:
 
 
 <!-- ```java
@@ -1525,7 +1525,7 @@ public void lataaRahaaKortille(Maksukortti kortti, double summa) {
 ``` -->
 
 ```java
-public void addMoneyToCard(PaymentCard card, double sum) {
+public void depositToCard(PaymentCard card, double sum) {
     // ...
 }
 ```
@@ -1569,17 +1569,17 @@ public class MainProgram {
 
         PaymentCard annesCard = new PaymentCard(2);
 
-        System.out.println("amount of money on the card is " + annesCard.balance() + " euros");
+        System.out.println("amount on the card " + annesCard.balance() + " euros");
 
         boolean wasSuccessful = unicafeExactum.eatHeartily(annesCard);
         System.out.println("there was enough money: " + wasSuccessful);
 
-        unicafeExactum.addMoneyToCard(annesCard, 100);
+        unicafeExactum.depositToCard(annesCard, 100);
 
         wasSuccessful = unicafeExactum.eatHeartily(annesCard);
         System.out.println("there was enough money: " + wasSuccessful);
 
-        System.out.println("amount of money on the card is " + annesCard.balance() + " euros");
+        System.out.println("amount on the card " + annesCard.balance() + " euros");
 
         System.out.println(unicafeExactum);
     }
@@ -1599,12 +1599,12 @@ kassassa rahaa 1100.0 edullisia lounaita myyty 0 maukkaita lounaita myyty 1
 
 <sample-output>
 
-money: 1000.0, number of sold afforable meals: 0, number of sold hearty meals: 0
+money: 1000.0, number of affordable meals sold: 0, number of hearty meals sold: 0
 amount of money on the card is 2.0 euros
 there was enough money: false
 there was enough money: true
 amount of money on the card is 97.7 euros
-money: 1100.0, number of sold afforable meals: 0, number of sold hearty meals: 1
+money: 1100.0, number of affordable meals sold: 0, number of hearty meals sold: 1
 
 </sample-output>
 
@@ -1614,7 +1614,7 @@ money: 1100.0, number of sold afforable meals: 0, number of sold hearty meals: 1
 
 <!-- ## Olio oliomuuttujana -->
 
-## Object as object variable
+## Object as Instance Variables
 
 
 <!-- Oliot voivat sisältää viitteitä olioihin. -->
