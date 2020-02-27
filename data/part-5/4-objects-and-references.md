@@ -1623,7 +1623,7 @@ Objects may contain references to objects.
 
 <!-- Jatketaan henkilöiden parissa ja lisätään henkilölle syntymäpäivä. Syntymäpäivä on luonnollista esittää `Paivays`-luokan avulla: -->
 
-Let's keep working with people, and add a birthday to the person class. A natural way of representing a birthday is to use a `Date` class. We could use the classname `Date`, but for the sake of avoiding confusion with the [similarly named existing Java class](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), we will use `SimpleDate` here.
+We'll carry on working with persons, and add a birthday to the person class. A natural way of representing a birthday is to use a `Date` class. We could use the classname `Date`, but for the sake of avoiding confusion with the [similarly named existing Java class](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), we will use `SimpleDate` here.
 
 <!-- ```java
 public class Paivays {
@@ -1808,38 +1808,38 @@ Blaise Pascal, born on 19.6.1623
 
 <!-- Henkilöoliolla on nyt oliomuuttujat `nimi` ja `syntymapaiva`. Muuttuja `nimi` on merkkijono, joka sekin on siis olio, ja muuttuja `syntymapaiva` on Päiväysolio. -->
 
-Now a person object has object variables `name` and `birthday`. The variable `name` is a string, which itself is an object; the variable `birthday is an SimpleDate object.
+Now a person object has the instance variables `name` and `birthday`. The variable `name` is a string, which itself is an object, and the variable `birthday` is a SimpleDate object.
 
 
 <!-- Molemmat muuttujat sisältävät arvon olioon. Henkilöolio sisältää siis kaksi viitettä. Alla olevassa kuvassa paino ja pituus on jätetty huomiotta. -->
 
-Both variables contain a reference to an object. Therefore a person object contains two references. In the image below, weight and height are not considered at all.
+Both variables contain a reference to an object. As such, a person object contains two references. In the image below, weight and height have been ignored.
 
 <img src="../img/drawings/muhammad-ja-pascal.png"/>
 
 
 <!-- Pääohjelmalla on nyt siis langan päässä kaksi Henkilö-olioa. Henkilöllä on nimi ja syntymäpäivä. Koska molemmat ovat olioita, ovat ne henkilöllä langan päässä. -->
 
-So the main program has is connected to two Person objects by strands. A person has a name and a birthday. Since both variables are objects, these attributes exist at the other ends of the strands.
+The main program now has two person objects at the ends of the arrows. A person has a name and a birthday. Since both are objects, these attributes are at arrows' ends in the person object.
 
 
 <!-- Syntymäpäivä vaikuttaa hyvältä laajennukselta Henkilö-luokkaan. Totesimme aiemmin, että oliomuuttuja `ika` voidaan laskea syntymäpäivästä, joten siitä hankkiuduttiin eroon. -->
 
 
-Birthday appears to be a good extension to the Person class. Earlier we noted that the object variable `age` can be calculated with birthday, so it was removed.
+The addition of birthday appears to be a sensible extension of the Person class. We noted earlier on that the object variable `age` can be calculated from birthday, which is why it was removed.
 
 <!-- <text-box variant='hint' name='Päivämäärän käyttö Java-ohjelmissa'> -->
 
-<text-box variant='hint' name='Date in Java programs'>
+<text-box variant='hint' name='Date in Java Programs'>
 
 
 <!-- Käytämme edellä omaa luokkaa `Paivays` päivämäärän esittämiseen, sillä sen avulla voi havainnollistaa ja harjoitella olioiden toimintaa. Mikäli omissa ohjelmissaan haluaa käsitellä päivämääriä, kannattaa tutustua Javan valmiiseen luokkaan [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html), joka sisältää merkittävän määrän päivämäärien käsittelyyn liittyvää toiminnallisuutta. -->
 
-In the section above, we use our own class `SimpleDate` to represent date, because it is suitable for illustrating and practising the operation of objects. If you want to handle dates in your own programs, it's worth reading about the premade Java class [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html). It contains a significant amount of functionality that can be used to handle dates.
+In the section above, we use our own `SimpleDate` class to represent date, as we can use it to illustrate and practice with object behavior. If you want to deal with dates in your own programs, it's worth checking out the pre-made [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) class in Java that comes with a lot functionality for handling dates.
 
 <!-- Esimerkiksi nykyinen päivä selviää Javan valmiin `LocalDate`-luokan avulla seuraavasti: -->
 
-For example, the current date can be used with the existing `LocalDate` class in the following manner:
+The current date, for example, can be used with the Java's `LocalDate` class like so:
 
 <!-- ```java
 import java.time.LocalDate;
@@ -1882,13 +1882,13 @@ public class Example {
 
 <!-- <programming-exercise name='Henkilö ja lemmikki' tmcname='osa05-Osa05_08.HenkiloJaLemmikki'> -->
 
-<programming-exercise name='Biggest pet shop' tmcname='part05-Part05_08.BiggestPetShop'>
+<programming-exercise name='Biggest Pet Shop' tmcname='part05-Part05_08.BiggestPetShop'>
 
 
 
 <!-- Tehtäväpohjassa tulee kaksi luokkaa, `Henkilo` ja `Lemmikki`. Jokaisella henkilöllä on yksi lemmikki. Täydennä luokan `Henkilo` metodia `public String toString` siten, että metodi palauttaa merkkijonon, joka kertoo henkilön nimen lisäksi lemmikin nimen ja rodun. -->
 
-Two classes, `Person` and `Pet`, are included in the exercise template. Each person has one pet. Modify the `public String toString` method of the `Person` class so that the string it returns tells the pet's name and breed in addition to the person's own name.
+Two classes, namely `Person` and `Pet`, are included in the exercise template. Each person has one pet. Modify the `public String toString` method of the `Person` class so that the string returned by it tells the pet's name and breed, as well as the person's own name.
 
 
 <!-- ```java
@@ -1922,11 +1922,11 @@ Leo, has a friend called Lucy (golden retriever)
 
 <!-- ## Samantyyppinen olio metodin parametrina -->
 
-## Object of same type as method parameter
+## Object of Same Type as Method Parameter
 
 <!-- Jatkamme luokan `Henkilo` parissa. Kuten muistamme, henkilöt tietävät syntymäpäivänsä: -->
 
-We will continue working with the `Person` class. We recall that persons know their birthdays:
+We'll continue with the `Person` class. We recall that persons know their birthdays:
 
 <!-- ```java
 public class Henkilo {
@@ -1954,7 +1954,7 @@ public class Person {
 
 <!-- Haluamme vertailla kahden henkilön ikää. Vertailu voidaan hoitaa usealla tavalla. Voisimme esimerkiksi toteuttaa Henkilo-luokkaan metodin `public int ikaVuosina()`, jolloin kahden henkilön iän vertailu tapahtuisi tällöin seuraavasti: -->
 
-We would like to compare the ages of two people. The comparison can be done in multiple ways. We could, for instance, implement a method called `public int ageAsYears()` for the Person class; in that case, the comparison would happen in the following manner:
+We would like to compare the ages of two people. The comparison can be done in multiple ways. We could, for instance, implement a method called `public int ageAsYears()` for the Person class, in which case the comparison would happen like so:
 
 <!-- ```java
 Henkilo muhammad = new Henkilo("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
@@ -1976,11 +1976,11 @@ if (muhammad.ageAsYears() > pascal.ageAsYears()) {
 
 <!-- Opettelemme tässä hieman "oliohenkisemmän" tavan kahden henkilön ikävertailun tekemiseen. -->
 
-We are now going to learn a more "object-oriented" way to compare the ages of people.
+We're now going to learn a more "object-oriented" way to compare the ages of people.
 
 <!-- Teemme luokalle Henkilo metodin `boolean vanhempiKuin(Henkilo verrattava)`, jonka avulla tiettyä henkilö-olioa voi verrata parametrina annettuun henkilöön iän perusteella. -->
 
-We are going to create a new method `boolean olderThan(Person compared)` for the Person class. It can be used to compare a certain person object to the person supplied as the parameter based on their ages.
+We're going to create a new method `boolean olderThan(Person compared)` in the Person class. It can be used to perform an age-based comparison between a person object and another one provided as a parameter.
 
 <!-- Metodia on tarkoitus käyttää seuraavaan tyyliin: -->
 
@@ -2011,11 +2011,11 @@ if (muhammad.olderThan(pascal)) {  //  same as muhammad.olderThan(pascal)==true
 
 <!-- Yllä oleva ohjelma kysyy onko al-Khwarizmi vanhempi kuin Pascal. Metodi `vanhempiKuin` palauttaa arvon `true` jos olio jonka kohdalla metodia kutsutaan (`olio.vanhempiKuin(parametrinaAnnettavaOlio)`) on vanhempi kuin parametrina annettava olio, ja `false` muuten. -->
 
-The program above asks if al-Khwarizmi is older than Pascal. The method `olderThan` returns `true` if the object that is used to call the method (`object.olderThan(objectGivenAsParameter)`) is older than the object given as the parameter, and `false` otherwise.
+The program above asks if al-Khwarizmi is older than Pascal. The method `olderThan` returns `true` if the object that's calling the method (`object.olderThan(objectGivenAsParameter)`) is older than the object given as the parameter, and `false` otherwise.
 
 <!-- Käytännössä yllä kutsutaan "Muhammad ibn Musa al-Khwarizmia" vastaavan olion, johon muuttuja `muhammad` viittaa, metodia `vanhempiKuin`. Metodille annetaan parametriksi "Blaise Pascal" vastaavan olion viite `pascal`. -->
 
-In practice, we call the `olderThan` method of the object that matches "Muhammad ibn Musa al-Khwarizmi", which is referred to by the variable `muhammad`. The reference `pascal`, matching the object "Blaise Pascal", is given as the parameter to that method.
+What happens is that we call the `olderThan` method of the object for "Muhammad ibn Musa al-Khwarizmi", which is referenced to by the variable `muhammad`. The reference `pascal` that matches the object "Blaise Pascal" is given as the parameter to that method.
 
 <!-- Ohjelma tulostaa: -->
 
@@ -2035,11 +2035,11 @@ Muhammad ibn Musa al-Khwarizmi is older than Blaise Pascal
 
 <!-- Metodille `vanhempiKuin` annetaan parametrina henkilöolio. Tarkemmin sanottuna metodin parametriksi määriteltyyn muuttujaan kopioituu parametrina annettavan muuttujan sisältämä arvo, eli viite olioon. -->
 
-The method `olderThan` receives a person object as its parameter. More precisely, the variable that is defined as the method parameter receives a copy of the value contained by the given variable. That value is a reference to an object, in this case.
+The method `olderThan` receives a person object as its parameter. Put more precisely, the variable that is defined as the method parameter receives a copy of the value contained by the given variable. That value is a reference to an object in this case.
 
 <!-- Metodin toteutus näyttää seuraavalta. Huomaa, että **metodi voi palauttaa arvon useammasta kohtaa** -- alla vertailu on pilkottu useampaan osaan vuoden, kuukauden ja päivän kohdalta: -->
 
-The implementation of the method is illustrated below. Note that the **method may return a value in more than one place** -- here the comparison has been divided into multiple parts based on the years, the months, and the days:
+The method's implementation is illustrated below. Note that the **method may return a value in more than one place** -- here the comparison has been divided into multiple parts based on the years, months, and days:
 
 
 <!-- ```java
@@ -2129,11 +2129,11 @@ public class Person {
 
 <!-- Mietitään hieman olio-ohjelmoinnin periatteiden abstrahointia. Abstrahoinnin ajatuksena on käsitteellistää ohjelmakoodia siten, että kullakin käsitteellä on omat selkeät vastuunsa. Kun pohdimme yllä esitettyä ratkaisua, huomaamme, että päivämäärien vertailutoiminnallisuus kuuluisi mielummin luokkaan `Paivays` luokan `Henkilo`-sijaan. -->
 
-Let's pause for a moment to consider abstraction, one of the principles of object-oriented programming. The idea behind abstraction is to conceptualize the programming code so that each concept has its own clear responsibilities. When viewing the solution above, however, we notice that the comparison functionality would be better placed inside the `SimpleDate` class instead of the `Person` class.
+Let's take a moment to think about abstraction, a principle of object-oriented programming. The idea behind abstraction is to conceptualize program code in such a way that each concept has its own clear responsibilities. If we consider the solution above, we notice, however, that it would be more suitable to have the comparison login within the `SimpleDate` class instead of the `Person` class.
 
 <!-- Luodaan luokalle `Paivays` metodi `public boolean aiemmin(Paivays verrattava)`. Metodi palauttaa arvon `true`, jos metodille parametrina annettu päiväys on kyseisen olion päiväyksen jälkeen. -->
 
-We'll create a method called `public boolean before(SimpleDate compared)` for the class `SimpleDate`. The method returns the value `true` if the date given as the parameter is after (or on the same day as) the date of the object whose method is called.
+We'll create a `public boolean before(SimpleDate compared)` method for the `SimpleDate` class. The method returns `true` if the date given as the parameter comes after (or on the same day as) the date of the object whose method is called.
 
 <!-- ```java
 public class Paivays {
@@ -2231,7 +2231,7 @@ public class SimpleDate {
 
 <!-- Vaikka oliomuuttujat `vuosi`, `kuukausi` ja `paiva` ovat olion kapseloimia (`private`) oliomuuttujia, pystymme lukemaan niiden arvon kirjoittamalla `verrattava.*muuttujanNimi*`. Tämä johtuu siitä, että `private`-muuttujat ovat luettavissa kaikissa metodeissa, jotka kyseinen luokka sisältää. Huomaa, että syntaksi (kirjoitusasu) vastaa tässä jonkin olion metodin kutsumista. Toisin kuin metodia kutsuttaessa, viittaamme olion kenttään, jolloin metodikutsun osoittavia sulkeita ei kirjoiteta. -->
 
-Even though the object variables `year`, `month`, and `day` are encapsulated (`private`) object variables, we can read their values by writing `compared.*variableName*`. This is because `private` variable can be accessed from all the methods contained by that class. Notice that the syntax here matches calling some object method. Unlike when calling a method, we refer to a field of an object, so the parentheses that indicate a method call are not written.
+Even though the instance variables `year`, `month`, and `day` are encapsulated (`private`) instance variables, we are able to read their values by writing `compared.*variableName*`. This is because `private` variables are accessible from within all of the methods of the given class. Notice that the syntax here matches that of an object method call. Unlike a method call, however, we're refer to an object's field, so the parentheses that indicate a method call are not written.
 
 <!-- Metodin käyttöesimerkki: -->
 
@@ -2297,7 +2297,7 @@ public static void main(String[] args) {
 
 <!-- Muunnetaan vielä henkilön metodia vanhempiKuin siten, että hyödynnämme jatkossa päivämäärän tarjoamaa vertailutoiminnallisuutta. -->
 
-Let's tweak the method olderThan of the Person class so that from here on out, we take use of the comparison functionality that date objects provide.
+Let's tweak the method olderThan of the Person class so that from here on, we make use of the comparison logic that date provides.
 
 <!-- ```java
 public class Henkilo {
@@ -2335,12 +2335,12 @@ public class Person {
 
 <!-- Nyt päivämäärän konkreettinen vertailu on toteutettu luokassa, johon se loogisesti (luokkien nimien perusteella) kuuluukin. -->
 
-Now the concrete comparison of dates is implemented in the class that it logically (based on the class names) belongs to.
+The concrete comparison of dates is now implemented in the class that it logically (based on the class names) belongs to.
 
 
 <!-- <programming-exercise name='Asuntovertailu (3 osaa)' tmcname='osa05-Osa05_11.Asuntovertailu'> -->
 
-<programming-exercise name='Comparing apartments (3 parts)' tmcname='part05-Part05_11.ComparingApartments'>
+<programming-exercise name='Comparing Apartments (3 parts)' tmcname='part05-Part05_11.ComparingApartments'>
 
 
 <!-- Asuntovälitystoimiston tietojärjestelmässä kuvataan myynnissä olevaa asuntoa seuraavasta luokasta tehdyillä olioilla: -->
@@ -2377,16 +2377,16 @@ public class Apartment {
 
 <!-- Tehtävänä on toteuttaa muutama metodi, joiden avulla myynnissä olevia asuntoja voidaan vertailla. -->
 
-Your task is to create a few methods that can be used to compare apartments that are being sold.
+Your task is to create a few methods that can be used to compare apartments being sold.
 
 
 <!-- <h2>Onko asunto suurempi</h2> -->
 
-<h2>Comparing sizes</h2>
+<h2>Comparing Sizes</h2>
 
 <!-- Tee metodi `public boolean suurempi(Asunto verrattava)` joka palauttaa true jos asunto-olio, jolle metodia kutsutaan, on pinta-alaltaan suurempi kuin verrattavana oleva asunto-olio. -->
 
-Create a method `public boolean largerThan(Apartment compared)` that returns true if the apartment object whose method is called has a larger total area than the apartment object that is being compared.
+Create a method `public boolean largerThan(Apartment compared)` that returns true if the apartment object whose method is being called has a larger total surface area than the apartment object that is being compared.
 
 <!-- Esimerkki metodin toiminnasta: -->
 
@@ -2406,9 +2406,6 @@ System.out.println(jakomakiKolmio.suurempi(kallioKaksio));  // true
 Apartment manhattanStudioApt = new Apartment(1, 16, 5500);
 Apartment atlantaTwoBedroomApt = new Apartment(2, 38, 4200);
 Apartment bangorThreeBedroomApt = new Apartment(3, 78, 2500);
-
-System.out.println(manhattanStudioApt.largerThan(atlantaTwoBedroomApt)); // false
-System.out.println(bangorThreeBedroomApt.largerThan(atlantaTwoBedroomApt)); // true
 ```
 
 <!-- <h2>Asuntojen hintaero</h2> -->
@@ -2418,7 +2415,7 @@ System.out.println(bangorThreeBedroomApt.largerThan(atlantaTwoBedroomApt)); // t
 
 <!-- Tee metodi `public int hintaero(Asunto verrattava)` joka palauttaa asunto-olion jolle metodia kutsuttiin ja parametrina olevan asunto-olion hintaeron. Hintaero on asuntojen hintojen erotuksen (hinta lasketaan kertomalla neliöhinta neliöillä) itseisarvo. -->
 
-Create a method `public int priceDifference(Apartment compared)` that returns the price difference of the apartment object whose method was called and the apartment object received as the parameter. The price difference is the absolute value of the difference of the prices (price can be calculated by multiplying the price per square by the number of squares).
+Create a method `public int priceDifference(Apartment compared)` that returns the price difference between the apartment object whose method was called and the apartment object received as the parameter. The price difference is the absolute value of the difference of the prices (price can be calculated by multiplying the price per square by the number of squares).
 
 <!-- Esimerkki metodin toiminnasta: -->
 
@@ -2479,11 +2476,10 @@ System.out.println(bangorThreeBedroomApt.moreExpensiveThan(atlantaTwoBedroomApt)
 
 <!-- ## Olioiden samankaltaisuuden vertailu (equals) -->
 
-## Comparing the equality of objects (equals)
+## Comparing the Equality of Objects (equals)
 
 <!-- Opimme merkkijonojen käsittelyn yhteydessä, että merkkijonojen vertailu tulee toteuttaa `equals`-metodin avullla. Tämä tapahtuu seuraavasti. -->
-
-Working with strings, we learned that comparison between strings must be done with the `equals` method. This is how it's done.
+We learned from working with strings that strings are compared with the `equals` method. It's done like so:
 
 <!-- ```java
 Scanner lukija = new Scanner(System.in);
@@ -2515,11 +2511,11 @@ if (first.equals(second)) {
 
 <!-- Alkeistyyppisten muuttujien kuten `int` kanssa muuttujien vertailu on mahdollista kahden yhtäsuuruusmerkin avulla. Tämä johtuu siitä, että alkeistyyppisten muuttujien arvo sijaitsee "muuttujan lokerossa". Viittaustyyppisten muuttujien arvo on taas osoite viitattavaan olioon, eli viittaustyyppisten muuttujien "lokerossa" on viite muistipaikkaan. Kahden yhtäsuuruusmerkin avulla verrataan "muuttujan lokeron" sisällön yhtäsuuruutta -- viittaustyyppisillä muuttujilla vertailu tarkastelisi siis muuttujien viitteiden yhtäsuuruutta. -->
 
-With primitive variables such as `int`, comparing two variables can be done with two equality signs. This is because the value of a primitive variable is stored directly in the "variable's box". The value of reference variables, in contrast, is an address of the object that is referenced; so the "box" contains a reference to the memory location. Using two equality signs compares the equality of the values stored in the "boxes of the variables" -- with reference variables, such comparisons would examine the equality of the memory references.
+With primitive variables such as `int`, comparing two variables can be done with two equality signs. This is because the value of a primitive variable is stored directly in the "variable's container". The value of a reference variable, in contrast, is an address of the object being referenced, i.e., the "container" contains a reference to the memory location. Using two equality signs compares the equality of the values stored in the "containers of the variables" -- with reference variables the comparisons would check whether the variables of the references were equal.
 
 <!-- Metodi `equals` on samankaltainen metodi kuin `toString` siinä, että se on käytettävissä vaikkei metodia olisi luokkaan määritelty. Metodin oletustoteutus vertaa viitteiden yhtäsuuruutta. Tarkastellaan tätä aiemmin toteuttamamme `Paivays`-luokan avulla. -->
 
-The method `equals` is similar to the method `toString` in the respect that it is available for use even if it has not been defined in the class. The default implementation of this method compares the equality of the references. Let's observe this with the help of the previously written `SimpleDate` class.
+The method `equals` is similar to the method `toString` in the sense that it's available for use even if it has not been defined in a class. The default implementation of this method compares the equality of the references. Let's observe this with the help of the already-implemented `SimpleDate` class.
 
 <!-- ```java
 Paivays eka = new Paivays(1, 1, 2000);
@@ -2604,17 +2600,17 @@ Variables first and fourth are equal
 
 <!-- Esimerkkiohjelma näyttää ongelman. Vaikka kahdella päiväyksellä (eka ja toka) on täsmälleen samat oliomuuttujan arvot, ovat ne metodin `equals` oletustoteutuksen näkökulmasta toisistaan poikkeavat. -->
 
-There is a problem with the program above. Even though two dates (first and second) have exactly the same values for object variables, they are different from each other from the point of view of the default `equals` method.
+There is a problem with the program above. Although the two dates (first and second) hold the exact same values in instance variables, they're different from in the eyes of the default `equals` method.
 
 
 <!-- Mikäli haluamme pystyä vertailemaan kahta itse toteuttamaamme oliota equals-metodilla, tulee metodi määritellä luokkaan. Metodi equals määritellään boolean-tyyppisen arvon palauttavana metodina -- palautettu arvo kertoo ovatko oliot samat. -->
 
-If we want to be able to compare two objects of our own design with the equals method, that method must be defined in the class. The method equals is defined as a method that returns a boolean type value -- the return value indicates whether the objects are equal.
+If we want to be able to compare two objects that we've ourselves implemented with the equals method, the method must be defined inside the class. The equals method should be defined as a method that returns a boolean type value -- this return value indicates whether the objects are equal.
 
 
 <!-- Metodi `equals` toteutetaan siten, että sen avulla voidaan vertailla nykyistä oliota mihin tahansa muuhun olioon. Metodi saa parametrinaan Object-tyyppisen olion -- kaikki oliot ovat oman tyyppinsä lisäksi Object-tyyppisiä. Metodissa ensin vertaillaan ovatko osoitteet samat: jos kyllä, oliot ovat samat. Tämän jälkeen tarkastellaan ovatko olion tyypit samat: jos ei, oliot eivät ole samat. Tämän jälkeen parametrina saatu Object-olio muunnetaan tyyppimuunnoksella tarkasteltavan olion muotoiseksi, ja oliomuuttujien arvoja vertaillaan. Alla vertailu on toteutettu Paivays-oliolle. -->
 
-The method `equals` is implemented in a way that allows for using it to compare the current object with any other object. The method receives an Object type object as its single parameter -- all objects are Object type, in addition to their own type. The equals method first compares if the addresses are equal: if so, the objects are equal. After this, we examine if the types of the objects are the same: if not, the objects are not equal. Then the Object object passed as the parameter is converted to the type of the object that is being examined by using a type cast. Then the values of the object variables can be compared. Below the equality comparison has been implemented for the SimpleDate class.
+The method `equals` is implemented in a way that makes is suitable for comparing the object in question with any other object. The method receives an object of type Object as its only parameter -- all objects are, in addition to their own type, of type Object. The equals method first compares if the addresses are equal: if so, the objects are equal. It then examines if the types of the objects are the same: if not, the objects are not equal. Then the Object object received as a parameter is converted to the type of the object being examined through type casting. The values of the instance variables can then be compared. This comparison has been implemented below for the SimpleDate class.
 
 
 <!-- ```java
@@ -2713,8 +2709,8 @@ public class SimpleDate {
         // into an SimpleDate type object called comparedSimpleDate
         SimpleDate comparedSimpleDate = (SimpleDate) compared;
 
-        // if the values of the object variables are the same, the objects are equal
-        if (this.day == comparedSimpleDate.day &&
+        // if the values of the instance variables are the same, the objects are equal
+        if (this.day == comparedSimpleDate.date &&
             this.month == comparedSimpleDate.month &&
             this.year == comparedSimpleDate.year) {
             return true;
@@ -2733,7 +2729,7 @@ public class SimpleDate {
 
 <!-- Vastaavan vertailutoiminnallisuuden rakentaminen onnistuu myös Henkilö-olioille. Alla vertailu on toteutettu Henkilo-oliolle, jolla ei ole erillista Paivays-oliota. Huomaa, että henkilöiden nimet ovat merkijonoja (eli olioita), joten niiden vertailussa käytetään equals-metodia. -->
 
-Building a similar comparison functionality is possible for Person objects, too. Below, the comparison has been implemented for Person objects that don't have a separate SimpleDate object. Notice that the names of people are strings (i.e., objects), so we use the equals method for comparing them.
+Building a similar comparison feature can be done for Person objects as well. Below, the comparison has been implemented for those Person objects that don't have a separate SimpleDate object. Notice that the names of people are strings (o.e., objects), and for this reason equals method is used for comparing them.
 
 
 <!-- ```java
@@ -2802,7 +2798,7 @@ public class Person {
         // convert the object into a Person object
         Person comparedPerson = (Person) compared;
 
-        // if the values of the object variables are equal, the objects are equal
+        // if the values of the instance variables are equal, the objects are equal
         if (this.name.equals(comparedPerson.name) &&
             this.age == comparedPerson.age &&
             this.weight == comparedPerson.weight &&
@@ -2826,7 +2822,7 @@ public class Person {
 
 <!-- Tehtäväpohjassa on luokka `Kappale`, jonka perusteella voidaan luoda musiikkikappaleita esittäviä olioita. Lisää luokkaan kappale metodi `equals`, jonka avulla voidaan tarkastella musiikkikappaleiden samankaltaisuutta. -->
 
-In the exercise base there is a class called `Song` that can be used to create new objects that represent songs. Add to that class the `equals` method so that the similarity of songs can be examined.
+In the exercise base there is a class called `Song` that can be used to create new objects that represent songs. Add the `equals` method to the class so that the similarity of songs can be examined.
 
 
 <!-- ```java
@@ -2872,7 +2868,7 @@ Songs are equal
 
 <!-- <programming-exercise name='Henkilövertailu' tmcname='osa05-Osa05_13.Henkilovertailu'> -->
 
-<programming-exercise name='Identical twins' tmcname='part05-Part05_13.IdenticalTwins'>
+<programming-exercise name='Identical Twins' tmcname='part05-Part05_13.IdenticalTwins'>
 
 
 <!-- Tehtäväpohjassa on luokka `Henkilo`, johon liittyy `Paivays`-olio. Lisää luokalle Henkilo metodi `public boolean equals(Object verrattava)`, jonka avulla voidaan verrata henkilöiden samuutta. Vertailussa tulee verrata kaikkien henkilön muuttujien yhtäsuuruutta (ml. syntymäpäivä). -->
@@ -2885,7 +2881,7 @@ In the exercise base you can find the `Person` class that is linked with an `Sim
 
 <!-- Tehtäväpohjassa ei ole ohjelman oikeellisutta tarkastavia testejä. Palauta tehtävä vasta kun vertailu toimii oikein. Alla koodia ohjelman testaamiseen. -->
 
-There are no tests in the exercise template to check the correctess of the solution. Only return your answer after the comparison works as it should. Below is some code to help test the program.
+There are no tests in the exercise template to check the correctness of the solution. Only return your answer after the comparison works as it should. Below is some code to help test the program.
 
 
 <!-- ```java
@@ -3169,7 +3165,7 @@ public class Bird {
         // convert the object to a Bird object
         Bird comparedBird = (Bird) compared;
 
-        // if the values of the object variables are equal, the objects are, too
+        // if the values of the instance variables are equal, the objects are, too
         return this.name.equals(comparedBird.name);
 
         /*
@@ -3673,7 +3669,7 @@ public class Factory {
 
 <!-- Tehtäväpohjan mukana tulee luokka `Paivays`, jossa päivämäärä talletetaan oliomuuttujien `vuosi`, `kuukausi`, ja `paiva` avulla: -->
 
-With the exercise base the class `SimpleDate` is supplied. The date is stored with the help of the object variables `year`, `month`, and `day`:
+With the exercise base the class `SimpleDate` is supplied. The date is stored with the help of the instance variables `year`, `month`, and `day`:
 
 
 <!-- ```java
@@ -4005,7 +4001,7 @@ public class Money {
 
 <!-- Määrittelyssä pistää silmään oliomuuttujien määrittelyn yhteydessä käytetty sana `final`, tällä saadaan aikaan se, että oliomuuttujien arvoa ei pystytä muuttamaan sen jälkeen kun ne on konstruktorissa asetettu. Raha-luokan oliot ovatkin muuttumattomia eli *immutaabeleita*, eli jos halutaan esim. kasvattaa rahamäärää, on luotava uusi olio, joka kuvaa kasvatettua rahasummaa. -->
 
-The word `final` used in the definition of object variables catches attention. The result of this word is that the values of these object variables cannot be modified after they have been set in the constructor. The objects of Money class are unchangeable so **immutable** -- if we want to e.g., increase the amount of money, we must create a new object to represent that new amount of money.
+The word `final` used in the definition of instance variables catches attention. The result of this word is that the values of these instance variables cannot be modified after they have been set in the constructor. The objects of Money class are unchangeable so **immutable** -- if we want to e.g., increase the amount of money, we must create a new object to represent that new amount of money.
 
 
 <!-- Luomme seuraavassa muutaman operaation rahojen käsittelyyn. -->
