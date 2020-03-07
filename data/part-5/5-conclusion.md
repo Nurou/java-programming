@@ -8,7 +8,7 @@ hidden: false
 
 <!-- Viidennessä osassa syvennyttiin olioiden maailmaan. Tarkastelimme alkeis- ja viittaustyyppisten muuttujien eroa. Tutustuimme metodien ja konstruktorien kuormittamiseen, harjoittelimme olioiden käyttöä oliomuuttujina sekä metodin parametrina ja paluuarvona. Harjoittelimme olioiden vertailuun käytettävien metodien luomista, ja käsittelimme olioita listalla sekä listoja oliomuuttujana. -->
 
-In the fifth part we took a deep dive into the world of objects. We examined the differences between primitive and reference variables. We learned to overload methods and constructors, and we practiced using objects as object variables, method parameters, and method return values. We created methods that compare objects with each other, and we saw how objects are handled with objects in them.
+In the fifth part, we took a deep dive into the world of objects. We looked at the differences between primitive and reference variables. We also learned how to overload methods and constructors, and practiced using objects as instance variables, method parameters, and method return values. We practiced creating methods that perform comparisons on objects, and handled lists containing objects and used them as instance variables.
 
 <!-- TODO: yhteenveto osan relevanteista opeista -->
 

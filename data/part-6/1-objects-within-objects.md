@@ -21,9 +21,9 @@ hidden: false
 
 Alla olevassa esimerkissä käsitteelle soittolista on luotu luokka. Soittolista sisältää kappaleita: siihen voi lisätä kappaleita, siitä voi poistaa kappaleita, ja siinä olevat kappaleet voi tulostaa. -->
 
- Next, let's have a look at objects that contain a list. Examples of objects like these include objects that describe sets, for example playlists.
+ Let's now take a look at objects that contain a list. Examples of objects like these include objects that represent sets of something, such as playlists.
 
- In the following example, we have made a class for the concept of a playlist. The playlist contains songs: songs can be added, songs can be removed, and the songs that the playlist contains can be printed.
+ In the following example, we have made a class for the concept of a playlist. The playlist contains songs. Songs can be added and removed, and individual songs can be printed.
 
 <!-- ```java
 // importit
@@ -79,7 +79,7 @@ public class Playlist {
 
 <!-- Soittolistojen luominen on edellisen luokan avulla helppoa. -->
 
-Creating playlists is easy with the help of the class above.
+Creating playlists is now easy with the help of the class above.
 
 <!-- ```java
 Soittolista lista = new Soittolista();
@@ -109,9 +109,9 @@ Teuvo, maanteiden kuningas
 
 Tehtäväpohjan mukana tulee `Main`-luokka, jossa voit testata ruokalistan toimintaa. Ruokalistan toteuttamista varten saat seuraavanlaisen tehtäväpohjan: -->
 
-The gourmet restaurant 'Unicafe' on the Kumpula campus of the University of Helsinki needs a new menu. The chef knows about programming and wants a computer system to manage the menu. In this assignment, we'll implement the heart of the system, the Menu class.
+The gourmet restaurant 'Unicafe' situated on the Kumpula campus of the University of Helsinki needs a new menu. The chef knows about programming and wants a computer system to manage the menu. In this assignment, we'll implement the heart of the system, the Menu class.
 
-The exercise template comes with a `Main` class that you can use to test the menu. For the implementation of the menu, you'll have the following boilerplate code:
+The exercise template comes with a `Main` class that you can use to test the menu. For the implementation of the menu, you'll have the following template:
 
 <!-- ```java
 import java.util.ArrayList;
@@ -212,11 +212,11 @@ Toteuta metodi `public void lisaaAteria(String ateria)`, joka lisää uuden ater
 Toteuta metodi `public void tulostaAteriat()`, joka tulostaa ateriat. Voit kokeilla ohjelmaa seuraavalla esimerkkikoodilla. -->
 <h2>Adding a Meal</h2>
 
-Implement the `public void addMeal(String meal)` method, which adds a new meal to the `meals` list. If the meal you want to add is already on the list, you shouldn't add it again. The list method `contains` is handy for checking an items existence on it.
+Implement the `public void addMeal(String meal)` method that adds a new meal to the `meals` list. If the meal you want to add is already on the list, you shouldn't add it again. The list method `contains` is handy for checking for the existence of items on it.
 
 <h2>Printing the Meals</h2>
 
-Implement the `public void printMeals()` method, which prints the meals. You can test out the program using the following example code.
+Implement the `public void printMeals()` method that prints the meals. You can test the program using the following example code.
 
 <!-- ```java
 Ruokalista menu = new Ruokalista();
@@ -326,7 +326,7 @@ Luo luokka `Pakka`, jolla on oliomuuttujana merkkijonoja sisältävä listan. Li
 
 Voit kokeilla luokkaasi seuraavalla koodilla: -->
 
-A stack is a data structure that you can add to and take from. Always to the top of it or from the top.
+A stack is a data structure whose top you can add to or take from.
 
 <h2> Adding to the Stack and Checking Emptiness </h2>
 
@@ -377,7 +377,7 @@ false
 Lisää luokalle `Pakka` metodi `public String ota()`, joka palauttaa pakan päällimmäisenä olevan arvon (eli pakkaan viimeisenä lisätyn arvon) ja poistaa sen pakasta. -->
 <h2>Taking from the Stack</h2>
 
-Add to the `Stack` class a `public String take()` method, which returns the topmost value (i.e., the last value added to the deque) and removes it from the stack.
+Add to the `Stack` class a `public String take()` method, which returns the stack's topmost value (i.e., the last value added to the stack) and removes it from the stack.
 
 <!-- ```java
 Pakka p = new Pakka();
@@ -469,13 +469,13 @@ Tip! When a value is added to an ArrayList, it goes to the end of the list. As s
 
 <!-- ## Omia olioita oliomuuttujana olevalla listalla -->
 
-## Objects in an Instance Variable List
+## Custom Objects on Lists Belonging to Objects
 
 <!-- Oliomuuttujana oleva lista voi sisältää merkkijonojen lisäksi myös muunlaisia olioita, kunhan listalla olevien olioiden tyyppi määritellään listan määrittelyn yhteydessä.
 
 Loimme edellisessä osassa luokan `Huvipuistolaite`, jonka avulla tarkastellaan pääseekö henkilö laitteen kyytiin. Luokka `Huvipuistolaite` näyttää seuraavalta. -->
 
-A list that is an object's instance variable can contain objects other than strings as long as the type of objects in the list is specified when defining the list.
+A list that's an instance variable can contain objects other than strings as long as the type of objects in the list is specified when the list is defined.
 
 In the previous section, we created a class called `AmusementParkRide`, which was used to check whether or not a person was eligible to get on a particular ride. The `Amusement park` class looks like the following.
 
@@ -818,7 +818,7 @@ Matti
 
 <!-- Vaikka laitteessa ei ole ketään kyydissä, on tulostuksessa silti merkkijono `kyydissä:`. Muokataan metodia `toString` siten, että jos kyydissä ei ole ketään, metodi palauttamassa merkkijonossa on tieto siitä. -->
 
-Even though there is no one on the ride, the string `riding:` is on the print output. Let's modify the `toString` method so that if there is no one on the ride, the string returned by the method informs of it.
+Even though there is no one on the ride, the string `riding:` is on the print output. Let's modify the `toString` method so that if there is no one on the ride, the string returned by the method can inform us.
 
 <!-- ```java
 public class Huvipuistolaite {
@@ -898,7 +898,7 @@ public class AmusementParkRide {
 
 <!-- Nyt olion tulostus on parempi. -->
 
-The print output has now been improved.
+The output has been improved.
 
 <!-- ```java
 Henkilo matti = new Henkilo("Matti");
@@ -996,7 +996,7 @@ Matti
 
 Toteuta luokalle `toString`-metodi, jonka avulla tulostus toimii seuraavien esimerkkien kuvaamalla tavalla. -->
 
-The exercise template has a predefined `SimpleCollection` class, which is used to represent a group of values. The class is missing the `toString` method used for printing.
+The exercise template has a predefined `SimpleCollection` class used to represent a group of values. The class is missing the `toString` method used for printing.
 
 Implement a `toString` method for the class that will perform as demonstrated in the following examples.
 
@@ -1148,11 +1148,11 @@ phoenix
 
 <!-- ### Olion sisältämän listan tyhjentäminen -->
 
-### Clearing an Object's List
+### Clearing a List on an Object
 
 <!-- Lisätään huvipuistolaitteelle seuraavaksi metodi `poistaKaikkiKyydista`, joka poistaa kaikki laitteessa olevat henkilöt laitteen kyydistä. Tässä listan metodi `clear` on erittäin kätevä. -->
 
-We'll next add a `removeEveryoneOnRide` method to the amusement park ride, which removes each and every person currently on the ride.The list method `clear` is very handy here.
+We'll now add a `removeEveryoneOnRide` method to the amusement park ride, which removes each and every person currently on the ride.The list method `clear` comes in handy here.
 
 <!-- ```java
 public class Huvipuistolaite {
@@ -1286,9 +1286,9 @@ no one is on the ride.
 
 Alla olevassa toteutuksessa palautetaan arvo `-1` mikäli kyydissä ei ole yhtäkään henkilöä. Pituuksien keskiarvoa laskevassa ohjelmassa luku `-1` on mahdoton, joten siitä voi päätellä ettei keskiarvoa ole voitu laskea. -->
 
-Let's now create a method for the amusement park ride that calculates the average height of the people currently on it. Average height can obtained by calculating the average from the persons on the ride -- the average is calculated by adding up the individual values and dividing that sum by the number of values.
+Let's create a method for the amusement park ride that calculates the average height of the people currently on it. Average height can obtained by calculating the average from the persons on the ride -- the average is calculated by adding up the individual values and dividing that sum by the number of values.
 
-The implementation underneath returns `-1` if not a single person is on the ride. The result of `-1` is impossible in a program that calculates averages. Based on that, we can determine that the average could not have been calculated.
+The implementation underneath returns `-1` if not even a single person is on the ride. A result of `-1` is impossible in a program that calculates averages, so we can conclude that the average could not have been calculated.
 
 <!-- ```java
 public class Huvipuistolaite {
@@ -1407,7 +1407,7 @@ Awak
 
 <!-- Tässä tehtävässä harjoitellaan lahjojen pakkaamista. Tehdään luokat `Lahja` ja `Pakkaus`. Lahjalla on nimi ja paino, ja Pakkaus sisältää lahjoja. -->
 
-We'll practise wrapping gifts in this exercise. Let's create the classes `Gift` and `Package`. The gift has a name and weight, and the package contains gifts.
+ In this exercise, we'll practise wrapping gifts. Let's create the classes `Gift` and `Package`. The gift has a name and weight, and the package contains gifts.
 
 <!-- <h2>Lahja-luokka</h2> -->
 <h2>Gift-class</h2>
@@ -1426,7 +1426,7 @@ Lisää luokkaan seuraavat metodit:
 
 Seuraavassa on luokan käyttöesimerkki: -->
 
-Create a `Gift` class, where the objects instantiated from it represent different kinds of gifts. The information that's recorded is the name and weight of the item (kg).
+Create a `Gift` class, where the objects instantiated from it represent different kinds of gifts. The information recorded is the name and weight of the item (kg).
 
 Add the following methods to the class:
 
@@ -1560,9 +1560,9 @@ The program's output should be the following:
 
 Metodit, jotka hakevat listalta oliota, kannattaa toteuttaa seuraavasti. Ensin katsotaan onko lista tyhjä -- mikäli lista on tyhjä, palautetaan `null`-viite tai joku muu arvo, joka kertoo että listalla ei ollut arvoja. Tämän jälkeen luodaan palautettavaa oliota kuvaava oliomuuttuja, jonka arvoksi asetetaan listan ensimmäinen olio. Tätä seuraa listan arvojen läpikäynti siten, että kutakin listalla olevaa oliota verrataan palautettavaa oliota kuvaavaan oliomuuttujaan. Mikäli vertailussa löydetään hakuun paremmin osuva olio, asetetaan palautettavan olion arvoksi hakuun paremmin osuva olio. Lopulta palautettavaa oliota kuvaava oliomuuttuja palautetaan. -->
 
-We'll now create a method for the amusement park ride that returns the tallest person on the ride. As such, the method should both retrieve the tallest person from the list and return it.
+We'll now create a method for the amusement park ride that returns the tallest person on the ride. To clarify, the method should both retrieve and return the tallest person on the list.
 
-Methods that retrieve objects from a list should be implemented in the following way. First off, we'll check whether or not the list is empty - if it is, we return a `null` reference or some other value indicating that the list had no values. After that, we create an object reference variable that describes the object to be returned. We set the first object on the list as its value. We then go through the values on the list by comparing each list object with the object variable representing the object to be returned. If the comparison finds a better matching object, its assigned to the object reference variable to be returned. Finally, we return the object variable describing the object that we want to return.
+Methods that retrieve objects from a list should be implemented in the following way. We first check whether or not the list is empty - if it is, we return a `null` reference, or some other value indicating that the list had no values. After that, we create an object variable that for the object to be returned. We set the first object on the list as its value. We then go through the values on the list by comparing each list object with the object variable representing the object to be returned. If the comparison finds a better matching object, its assigned to the object variable to be returned. Finally, we return the object variable describing the object that we want to return.
 
 <!-- ```java
 public Henkilo haePisin() {
@@ -1700,11 +1700,11 @@ Awak
 </sample-output>
 
 <!-- <programming-exercise name='Joukon pisin' tmcname='osa06-Osa06_06.JoukonPisin'> -->
-<programming-exercise name='Longest in collection' tmcname='part06-Part06_06.LongestInCollection'>
+<programming-exercise name='Longest in Collection' tmcname='part06-Part06_06.LongestInCollection'>
 
 <!-- Tehtäväpohjassa on mukana aiemmasta tehtävästä tuttu luokka `Joukko`. Toteuta luokkaan metodi `public String pisin()`, joka palauttaa joukon pisimmän merkkijonon. Mikäli joukko on tyhjä, metodin tulee palauttaa `null`-viite. -->
 
-The exercise template comes with the class `SimpleCollection` that's familiar from previous exercises. Implement the method `public String longest()` for the class, which returns the longest string of the collection. If the collection is empty, the method should return a `null` reference.
+The exercise template comes with the class `SimpleCollection` familiar from previous exercises. Implement the method `public String longest()` for the class, which returns the longest string of the collection. If the collection is empty, the method should return a `null` reference.
 
 <!-- ```java
 Joukko j = new Joukko("hahmot");
@@ -1830,7 +1830,7 @@ Terhi (185 cm)
 
 <!-- <h2>Lyhin henkilö</h2> -->
 
-<h2>Shortest person</h2>
+<h2>Shortest Person</h2>
 
 <!-- Lisää luokalle `Huone` metodi `public Henkilo lyhin()`, joka palauttaa huoneeseen lisätyistä henkilöistä lyhimmän. Mikäli huone on tyhjä, palauttaa `null`-viitteen. Metodin ei tule poistaa henkilöä huoneesta. -->
 
@@ -1930,11 +1930,11 @@ Terhi (185 cm)
 
 <!-- <h2>Huoneesta ottaminen</h2> -->
 
-<h2>Taking from a room</h2>
+<h2>Taking From a Room</h2>
 
 <!-- Lisää luokalle `Huone` metodi `public Henkilo ota()`, ottaa huoneesta lyhimmän henkilön. Mikäli huone on tyhjä, metodi palauttaa `null`-viitteen. -->
 
-Add a `public Person take()` method to the `Room` class, which takes the shortest person in the room. When a room is empty, it returns a `null` reference.
+Add a `public Person take()` method to the `Room` class, which takes the shortest person in the room. If the room is empty, it should return a `null` reference.
 
 <!-- ```java
 Huone huone = new Huone();
@@ -2055,7 +2055,7 @@ Auli (186 cm)
 </programming-exercise>
 
 <!-- <programming-exercise name='Tavara, Matkalaukku ja Lastiruuma (7 osaa)' tmcname='osa06-Osa06_08.TavaraMatkalaukkuJaLastiruuma' nocoins='true'> -->
-<programming-exercise name='Cargo hold (7 parts)' tmcname='part06-Part06_08.CargoHold' nocoins='true'>
+<programming-exercise name='Cargo Hold (7 parts)' tmcname='part06-Part06_08.CargoHold' nocoins='true'>
 
 <!-- Tässä tehtäväsarjassa tehdään luokat `Tavara`, `Matkalaukku` ja `Lastiruuma`, joiden avulla harjoitellaan lisää olioita, jotka sisältävät toisia olioita. -->
 
@@ -2078,7 +2078,7 @@ Lisää luokkaan seuraavat metodit:
 
 Seuraavassa on luokan käyttöesimerkki: -->
 
-Create an `Item` class from which objects can be instantiated to represent different items. The information to store is the name and weight of the item (kg).
+Create an `Item` class that can be used to instantiate objects representing different items. The information recorder is the name and weight of the item (kg).
 
 Add the following methods to the class:
 
@@ -2259,7 +2259,7 @@ The program's output should be the following:
 
 Nyt edellisen ohjelman tulostuksen tulisi olla seuraava: -->
 
-The statement "1 items" is not exactly proper English -- a better form would be "1 item". The lack of items could also be expressed as "no items". Implement this change to the toString method of the `Suitcase` class.
+The statement "1 items" is not proper English -- a better way to express is would be "1 item". The lack of items could also be expressed as "no items". Implement this change to the toString method of the `Suitcase` class.
 
 The output of the previous program should now look as follows:
 
@@ -2368,13 +2368,13 @@ Make a further modification to your class so that you only use two instance vari
 
 <!-- <h2>Raskain tavara</h2> -->
 
-<h2>Heaviest item</h2>
+<h2>Heaviest Item</h2>
 
 <!-- Lisää vielä luokkaan `Matkalaukku` metodi `raskainTavara`, joka palauttaa painoltaan suurimman tavaran. Jos yhtä raskaita tavaroita on useita, metodi voi palauttaa minkä tahansa niistä. Metodin tulee palauttaa olioviite. Jos laukku on tyhjä, palauta arvo <em>null</em>.
 
 Seuraavassa on luokan käyttöesimerkki: -->
 
-Add to the `Suitcase` class a `heaviestItem` method, which returns the largest item based on weight. If several items share the heaviest weight, the method can return any one of them. The method should return an object reference. If the suitcase is empty, return the value *null*.
+Add to the `Suitcase` class a `heaviestItem` method, which returns the largest item based on weight. If there is more than one heaviest item, the method can return any one of them. The method should return an object reference. If the suitcase is empty, return the value *null*.
 
 The following is an example of the class in use:
 
