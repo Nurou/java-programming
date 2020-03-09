@@ -9,17 +9,16 @@ hidden: false
 <!-- - Tutustut sovelluksen luomiseen siten, että käyttöliittymä ja sovelluslogiikka ovat erillään. -->
 <!-- - Osaat luoda tekstikäyttöliittymän, joka saa parametrinaan sovelluskohtaisen sovelluslogiikan sekä syötteen lukemiseen käytettävän Scanner-olion. -->
 
- - Understand creating programs so that the user interface and the application logic are separated
+ - You become familiar with creating programs where the user interface and the application logic are separated
 
- - Can create a textual user interface, which takes program specific application logic and a Scanner object as parameters
+ - You know how to create a textual user interface that takes as its parameters program-specific application logic and a Scanner object for reading inputs
 
 
 </text-box>
 
 <!-- Tarkastellaan erään ohjelman rakennusprosessia sekä tutustutaan sovelluksen vastuualueiden erottamiseen toisistaan. Ohjelma kysyy käyttäjältä sanoja kunnes käyttäjä syöttää saman sanan uudestaan. Ohjelma käyttää listaa sanojen tallentamiseen. -->
 
-Let's examine the process of implementing a program and separating different areas of responsibility from each other.
-The program asks the user to write words until they write the same word twice.
+Let's take a look at the process of implementing a program, and how to separate areas of responsibility. This program asks the user to input words until they input the same word twice.
 
 <sample-output>
 
@@ -34,12 +33,11 @@ You wrote the same word twice!
 
 <!-- Rakennetaan ohjelma osissa. Eräs haasteista on se, että on vaikea päättää miten lähestyä tehtävää, eli miten ongelma tulisi jäsentää osaongelmiksi, ja mistä osaongelmasta kannattaisi aloittaa. Yhtä oikeaa vastausta ei ole -- joskus on hyvä lähteä pohtimaan ongelmaan liittyviä käsitteitä ja niiden yhteyksiä, joskus taas ohjelman tarjoamaa käyttöliittymää. -->
 
-Let's build this program piece by piece. One of the challenges is that it is difficult to decide how to approach the problem, or how to split the problem into smaller subproblems, and from which subproblem to start.
-There is no one clear answer -- sometimes it is good to start from the problem domain and its concepts and their connections, sometimes it is better to start from the user interface.
+Let's build this program piece by piece. One challenge is that it can be difficult to decide on how to approach a problem, or how to split it into smaller subproblems, and which subproblem to start off with. There isn't a clear answer -- sometimes it's a good idea to start from the problem domain, its concepts and their connections, and other times it may be better to start with the user interface.
 
 <!-- Käyttöliittymän hahmottelu voisi lähteä liikenteeseen luokasta Kayttoliittyma. Käyttöliittymä käyttää syötteen lukemiseen Scanner-oliota, joka annetaan sille käyttöliittymän luonnin yhteydessä. Tämän lisäksi käyttöliittymällä on käynnistämiseen tarkoitettu metodi. -->
 
-We could start implementing the user interface by creating a class UserInterface. The user interface uses a Scanner object for reading user input. This object is given to the User Interface
+A starting point for the user interface implementation could be the creation of a UserInterface class. UserInterface uses a Scanner object to read user input. The class also has a method for the purpose of launching the interface.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -64,14 +62,14 @@ public class UserInterface {
     }
 
     public void start() {
-        // do something
+        // we do something
     }
 }
 ```
 
 <!-- Käyttöliittymän luominen ja käynnistäminen onnistuu seuraavasti. -->
 
- Creating and starting up a user interface can be done as follows.
+ Creating and launching a user interface can be done like so.
 
 <!-- ```java
 public static void main(String[] args) {
@@ -90,7 +88,7 @@ public static void main(String[] args) {
 
 <!-- ## Toisto ja lopetus -->
 
-## Looping and quitting
+## Looping and Quitting
 
 
 <!-- Ohjelmassa on (ainakin) kaksi "aliongelmaa". Ensimmäinen on sanojen toistuva lukeminen käyttäjältä kunnes tietty ehto toteutuu. Tämä voitaisiin hahmotella seuraavaan tapaan. -->
@@ -434,7 +432,7 @@ for (String word: this.words) {
 
 <!-- ## Osaongelmien ratkaisujen yhdistäminen -->
 
-## Combining the solutions to sub-problems
+## Combining Solutions to Subproblems
 
 <!-- Muokataan vielä äsken tekemämme metodi `onJoSyotetty` tutkimaan onko kysytty sana jo syötettyjen joukossa, eli listassa. -->
 
@@ -457,7 +455,7 @@ Now the application works as intended.
 
 <!-- ## Oliot luonnollisena osana ongelmanratkaisua -->
 
-## Objects as a natural part of problem solving
+## Objects as Natural Parts of Problem Solving
 
 
 <!-- Rakensimme äsken ratkaisun ongelmaan, missä luetaan käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Syöte ohjelmalle oli esimerkiksi seuraavanlainen. -->
@@ -569,11 +567,11 @@ From the point of view of the user interface, the support variable 'words' is ju
 
 <!-- ### Sanajoukko -->
 
-### Word set
+### Word Set
 
 <!-- Tehdään luokka `Sanajoukko`, jonka käyttöönoton jälkeen käyttöliittymän metodi `kaynnista` on seuraavanlainen: -->
 
- Let's make a class called 'WordSet'. After implenting the class, the user interface's start method looks like this:
+ Let's make a class called 'WordSet'. After implementing the class, the user interface's start method looks like this:
 
 <!-- ```java
 while (true) {
@@ -636,7 +634,7 @@ public class Sanajoukko {
 
 ```java
 public class WordSet {
-    // object variable(s)
+    // instance variable(s)
 
     public WordSet() {
         // constructor
@@ -655,12 +653,12 @@ public class WordSet {
 
 <!-- ### Toteutus aiemmasta ratkaisusta -->
 
-### Earlier solution as part of implementation
+### An Implementation of the Previous Solution
 
 
 <!-- Voimme toteuttaa sanajoukon siirtämällä aiemman ratkaisumme listan sanajoukon oliomuuttujaksi: -->
 
-We can implement the set of words by making our earlier solution, the list, into an object variable:
+We can implement the set of words by making our earlier solution, the list, into an instance variable:
 
 
 <!-- ```java
@@ -794,7 +792,7 @@ public static void main(String[] args) {
 
 <!-- ## Luokan sisäisen toteutuksen muuttaminen -->
 
-## Changing the implementation of a class
+## Changing the Internal Implementation of a Class
 
 
 <!-- Olemme päätyneet tilanteeseen missä `Sanajoukko` ainoastaan "kapseloi" ArrayList:in. Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukkoon muuttamatta käyttöliittymän käyttävien metodien nimiä, ei käyttöliittymää tarvitsisi muuttaa mitenkään. -->
@@ -807,7 +805,7 @@ The main point here is that changes made inside the class WordSet don't affect t
 
 <!-- ## Uusien toiminnallisuuksien toteuttaminen: palindromit -->
 
-## Implementing new functionality: palindromes
+## Implementing New Functionality: Palindromes
 
 
 <!-- Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että `Sanajoukko`-luokan olisi osattava uusia asiota. Jos ohjelmassa haluttaisiin esimerkiksi tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla `palindromeja`. -->
@@ -973,7 +971,7 @@ When concepts have been separated into different classes in the code, recycling 
 
 <!-- ## Neuvoja ohjelmointiin -->
 
-## Programming tips
+## Tips for Programming
 
 
 <!-- Yllä kuvatussa laajemmassa esimerkissä noudatettiin seuraavia neuvoja. -->
@@ -1119,7 +1117,7 @@ Bye bye!
 
 <!-- <h2>Käännösten lisääminen</h2> -->
 
-<h2>Adding a translation</h2>
+<h2>Adding a Translation</h2>
 
 <!-- Muokkaa metodia `public void kaynnista()` siten, että se toimii seuraavalla tavalla: -->
 
@@ -1194,7 +1192,7 @@ System.out.println(dictionary.translate("pike")); // prints the string "hauki"
 
 <!-- <h2>Sanan kääntäminen</h2> -->
 
-<h2>Translating a word</h2>
+<h2>Translating a Word</h2>
 
 <!-- Muokkaa metodia `public void kaynnista()` siten, että se toimii seuraavalla tavalla: -->
 
@@ -1263,11 +1261,11 @@ Bye bye!
 
 <!-- <h2>Käännöksen siistiminen</h2> -->
 
-<h2>Cleaning up the translation</h2>
+<h2>Tidying the Translation</h2>
 
 <!-- Muokkaa tekstikäyttöliittymän hakutoiminnallisuutta siten, että mikäli sanaa ei löydy (eli sanakirja palauttaa `null`-viitteen), tekstikäyttöliittymä tulostaa viestin "Sanaa (haettava) ei löydy". -->
 
-Modify the searching functionality of the UI so that if the word isn't found (i.e. the dictionary returns `null`), the UI prints the message "Word (searched word) was not found".
+Modify the searching functionality of the UI so that if a word isn't found (i.e., the dictionary returns `null`), the UI prints the message "Word (searched word) was not found".
 
 <!-- <sample-output>
 
@@ -1577,7 +1575,7 @@ NB! The user interface is to use the ToDoList and Scanner that are passed as par
 
 <!-- ## Sovelluksesta osakokonaisuuksiin -->
 
-## From one entity to many parts
+## From a Whole Application to Entities
 
 <!-- Tarkastellaan ohjelmaa, joka kysyy käyttäjältä koepisteitä, muuntaa ne arvosanoiksi, ja lopulta tulostaa kurssin arvosanajakauman tähtinä. Ohjelma lopettaa lukemisen kun käyttäjä syöttää tyhjän merkkijonon. Ohjelman käyttö näyttää seuraavalta: -->
 
@@ -1779,12 +1777,12 @@ Let's separate the program into smaller chunks. This can be done by identifying 
 
 <!-- ### Sovelluslogikkka -->
 
-### Program logic
+### Application Logic
 
 
 <!-- Sovelluslogiikka sisältää ohjelman toiminnan kannalta oleellisen osat kuten tiedon säilöntätoiminnallisuuden. Edellisestä esimerkistä voidaan tunnistaa arvosanojen säilömiseen tarvittava toiminnallisuus. Eriytetään luokka `Arvosanarekisteri`, jonka vastuulle tulee kirjanpito arvosanojen lukumääristä. Arvosanarekisteriin voidaan lisätä arvosana pisteiden perusteella, jonka lisäksi arvosanarekisteristä voi kysyä kuinka moni on saanut tietyn arvosanan. -->
 
-Program logic includes parts that are crucial for the execution of the program, like functionalities that store information. From the previous example, we can separate the parts that store grade information. From these we can make a class called 'GradeRegister', which is responsible for keeping track of the numbers of different grades students have received. In the register, we can add grades according to scores. In addition, we can use the register to ask how many people have received a certain grade.
+Application logic includes parts that are crucial for the execution of the program, like functionalities that store information. From the previous example, we can separate the parts that store grade information. From these we can make a class called 'GradeRegister', which is responsible for keeping track of the numbers of different grades students have received. In the register, we can add grades according to scores. In addition, we can use the register to ask how many people have received a certain grade.
 
 <!-- Luokka voi näyttää esimerkiksi seuraavalta. -->
 
@@ -2005,7 +2003,7 @@ System.out.println("Number of students with grade 0 (should be 2): " + register.
 
 <!-- ### Käyttöliittymä -->
 
-### User interface
+### User Interface
 
 <!-- Käyttöliittymä on tyypillisesti sovelluskohtainen. Luodaan luokka `Kayttoliittyma` ja eriytetään se pääohjelmasta. Käyttöliittymälle annetaan parametrina arvosanarekisteri, jota käytetään arvosanojen säilömiseen, ja Scanner-olio, jota käytetään syötteen lukemiseen. -->
 
@@ -2237,7 +2235,7 @@ The exercise base includes the previously constructed program to store grades. I
 
 <!-- <h2>Arvosanojen keskiarvo</h2> -->
 
-<h2>Average grade</h2>
+<h2>Average Grade</h2>
 
 <!-- Lisää luokalle `Arvosanarekisteri` metodi `public double arvosanojenKeskiarvo()`, joka palauttaa arvosanojen keskiarvon. Mikäli arvosanarekisterissä ei ole yhtäkään arvosanaa, tulee metodin palauttaa luku `-1`.  Laske arvosanojen keskiarvo `arvosanat`-listaa hyödyntäen. -->
 
@@ -2277,11 +2275,11 @@ System.out.println(register.averageOfGrades());
 
 <!-- <h2>Koepisteiden keskiarvo</h2> -->
 
-<h2>Average points</h2>
+<h2>Average Points</h2>
 
 <!-- Lisää luokalle `Arvosanarekisteri` uusi oliomuuttuja lista, johon lisäät koepisteitä aina kun luokkaa käyttävä ohjelma kutsuu metodia `lisaaArvosanaPisteidenPerusteella`. Lisää tämän jälkeen luokalle metodi `public double koepisteidenKeskiarvo()`, joka laskee ja palauttaa koepisteiden keskiarvon. Mikäli arvosanarekisteriin ei ole lisätty yhtäkään koepistettä, tulee metodin palauttaa luku `-1`. -->
 
-Give the class `GradeRegister` a new object variable: a list where you will store the exam points every time that the method `addGradeBasedOnPoints` is called. After this addition, create a method `public double averageOfPoints()` that calculates and returns the average of the exam points. If there are no points added to the register, the method should return the number `-1`.
+Add a new instance variable to the `GradeRegister` class: a list where you'll store the exam points every time the method `addGradeBasedOnPoints` is called. After this, create a method `public double averageOfPoints()` that calculates and returns the average of the exam points. If there are no points added to the register, the method should return the number `-1`.
 
 Example:
 
@@ -2312,11 +2310,11 @@ System.out.println(register.averageOfPoints());
 
 <!-- <h2>Tulostukset käyttöliittymään</h2> -->
 
-<h2>Prints in the user interface</h2>
+<h2>Printing to the User Interface</h2>
 
 <!-- Lisää lopulta edellä toteutetut metodit osaksi käyttöliittymää. Kun sovellus tulostaa arvosanajakauman, tulee sovelluksen tulostaa myös pisteiden ja arvosanojen keskiarvo. -->
 
-As a final step, add the methods implemented above as parts of the user interface. When the program prints the grade distribution, it should also print the averages of the points and the grades.
+For the final step, add the methods implemented above to the user interface. When the program prints the grade distribution, it should also print the averages of both the points and the grades.
 
 <!-- <sample-output>
 
@@ -2369,7 +2367,7 @@ The average of grades: 2.4285714285714284
 
 <!-- Tehtäväpohjassa on valmiina seuraava "mainiin" kirjoitettu sovellus. -->
 
-The exercise base contains the following program that has been written "in the main".
+The exercise template contains the following program that has been written in the program's "main".
 
 
 <!-- ```java
@@ -2458,11 +2456,11 @@ while (true) {
 
 <!-- Sovellus on käytännössä vitsipankki. Vitsipankkiin voi lisätä vitsejä, vitsipankista voi arpoa vitsejä, ja vitsipankissa olevat vitsit voidaan tulostaa. Tässä tehtävässä sovellus pilkotaan osiin ohjatusti. -->
 
-The application is in practice a storage for jokes. You can add jokes, get a randomized joke, and the stored jokes can be printed. In this exercise the program is divided into parts in a guided manner.
+The application is a joke bank. You can add jokes to it, draw them from it at random, and they can also be printed. In this exercise, the program is divided into parts in a guided manner.
 
 <!-- <h2>Vitsipankki</h2> -->
 
-<h2>Joke manager</h2>
+<h2>Joke Manager</h2>
 
 <!-- Luo luokka `Vitsipankki` ja siirrä sinne vitsien hallinnointiin liittyvä toiminnallisuus. Luokalla tulee olla parametriton konstruktori sekä seuraavat metodit:
 
@@ -2545,7 +2543,7 @@ What is blue and smells of red paint? - Blue paint.
 
 <!-- <h2>Käyttöliittymä</h2> -->
 
-<h2>User interface</h2>
+<h2>User Interface</h2>
 
 <!-- Luo luokka `Kayttoliittyma` ja siirrä sinne sovelluksen käyttöliittymätoiminnallisuus. Luokalla tulee olla kaksiparametrinen konstruktori. Ensimmäisenä parametrina annetaan Vitsipankki-luokan ilmentymä, ja toisena parametrina Scanner-luokan ilmentymä. Tämän lisäksi luokalla tulee olla metodi `public void kaynnista()`, joka käynnistää käyttöliittymän.
 
