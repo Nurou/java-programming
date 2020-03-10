@@ -37,7 +37,7 @@ Let's build this program piece by piece. One challenge is that it can be difficu
 
 <!-- Käyttöliittymän hahmottelu voisi lähteä liikenteeseen luokasta Kayttoliittyma. Käyttöliittymä käyttää syötteen lukemiseen Scanner-oliota, joka annetaan sille käyttöliittymän luonnin yhteydessä. Tämän lisäksi käyttöliittymällä on käynnistämiseen tarkoitettu metodi. -->
 
-A starting point for the user interface implementation could be the creation of a UserInterface class. UserInterface uses a Scanner object to read user input. The class also has a method for the purpose of launching the interface.
+We could begin implementing the user interface by creating a UserInterface class. This UserInterface class uses a Scanner object to read user input. The class also has a method for the purpose of launching the interface.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -93,7 +93,7 @@ public static void main(String[] args) {
 
 <!-- Ohjelmassa on (ainakin) kaksi "aliongelmaa". Ensimmäinen on sanojen toistuva lukeminen käyttäjältä kunnes tietty ehto toteutuu. Tämä voitaisiin hahmotella seuraavaan tapaan. -->
 
-This program has (at least) two "sub-problems". The first problem is continuously reading words from the user until a certain condition is reached. We can outline this as follows.
+This program has (at least) two "subproblems". The first problem is continuously reading words from the user until a certain condition is reached. We can outline this as follows.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -140,14 +140,14 @@ public class UserInterface {
 
         }
 
-        System.out.println("You gave the same word twice!");
+        System.out.println("You entered the same word twice!");
     }
 }
 ```
 
 <!-- Sanojen kysely jatkuu kunnes käyttäjä syöttää jo aiemmin syötetyn sanan. Täydennetään ohjelmaa siten, että se tarkastaa onko sana jo syötetty. Vielä ei tiedetä miten toiminnallisuus kannattaisi tehdä, joten tehdään siitä vasta runko. -->
 
-The program continues to ask for words until the user enters a word that has already been entered before. Let us modify the program so that it checks whether the word has been entered or not. We don't know yet how to implement this functionality, so let us first build an outline for it.
+The program continues to ask for words until the user enters a word that has already been entered. Let's modify the program so that it checks if the word has already been entered. We don't yet know how to implement the functionality for this, so we'll begin by constructing an outline for it.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -200,7 +200,7 @@ public class UserInterface {
 
         }
 
-        System.out.println("You gave the same word twice!");
+        System.out.println("You entered the same word twice!");
     }
 
     public boolean alreadyEntered(String word) {
@@ -213,7 +213,7 @@ public class UserInterface {
 
 <!-- Ohjelmaa on hyvä testata koko ajan, joten tehdään metodista kokeiluversio: -->
 
-It's a good idea to test the program continuously, so let's make a test version of the method:
+It'd be a good idea to test the program continuously. Let's make a test version of the method:
 
 <!-- ```java
 public boolean onJoSyotetty(String sana) {
@@ -237,7 +237,7 @@ public boolean alreadyEntered(String word) {
 
 <!-- Nyt toisto jatkuu niin kauan kunnes syötteenä on sana loppu: -->
 
-Now the loop continues until the input equals the word "end":
+The loop now continues until the word "end" is entered:
 
 <!-- <sample-output>
 
@@ -256,21 +256,21 @@ Enter a word: **carrot**
 Enter a word: **celery**
 Enter a word: **turnip**
 Enter a word: **end**
-You gave the same word twice!
+You entered the same word twice!
 
 </sample-output>
 
 <!-- Ohjelma ei toimi vielä kokonaisuudessaan, mutta ensimmäinen osaongelma eli ohjelman pysäyttäminen kunnes tietty ehto toteutuu on saatu toimimaan.-->
 
-The program doesn't completely work yet, but the first sub-problem - quitting the loop when a certain condition has been reached - has now been implemented.
+The program doesn't work completely yet, but the first subproblem, i.e., stopping the loop when a certain condition has been met, has been implemented.
 
 <!-- ## Oleellisten tietojen tallentaminen -->
 
-## Storing relevant information
+## Storing Relevant Information
 
 <!-- Toinen osaongelma on aiemmin syötettyjen sanojen muistaminen. Lista sopii mainiosti tähän tarkoitukseen. -->
 
-Another sub-problem is remembering the words that have already been entered. A list is a good structure for this purpose.
+Another subproblem is remembering the words that have already been entered. A list is a good fit for this purpose.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -302,7 +302,7 @@ public class UserInterface {
 
 <!-- Kun uusi sana syötetään, on se lisättävä syötettyjen sanojen joukkoon. Tämä tapahtuu lisäämällä while-silmukkaan listan sisältöä päivittävä rivi:-->
 
-When a new word is entered, it has to be added to the list of words that have been entered before. This is done by adding a line that updates our list to the while-loop:
+When a new word is entered, it has to be added to the list of words that have been input. This is done by adding a line to the while-loop that updates our list:
 
 <!--
 ```java
@@ -335,7 +335,7 @@ while (true) {
 
 <!-- Kayttoliittyma näyttää kokonaisuudessaan seuraavalta.
  -->
-The whole user interface looks as follows.
+The user interface in its entirety looks like so:
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -399,7 +399,7 @@ public class UserInterface {
 
         }
 
-        System.out.println("You gave the same word twice!");
+        System.out.println("You entered the same word twice!");
     }
 
     public boolean alreadyEntered(String word) {
@@ -414,7 +414,7 @@ public class UserInterface {
 
 <!-- Jälleen kannattaa testata, että ohjelma toimii edelleen. Voi olla hyödyksi esimerkiksi lisätä kaynnista-metodin loppuun testitulostus, joka varmistaa että syötetyt sanat todella menivät listaan.  -->
 
-Again, it is a good idea to test that the program still works. For example, it might be useful to add a test print to the end of the start-method to make sure that the entered words have really been added to the list.
+Once again, it's a good idea to test that the program still works. It might be useful, for example, to add a test print to the end of the start-method to make sure that the words entered as input have in fact been added to the list.
 
 <!-- ```java
 // testitulostus joka varmistaa että kaikki toimii edelleen
@@ -436,7 +436,7 @@ for (String word: this.words) {
 
 <!-- Muokataan vielä äsken tekemämme metodi `onJoSyotetty` tutkimaan onko kysytty sana jo syötettyjen joukossa, eli listassa. -->
 
-Let's change the method 'alreadyEntered' so that it checks whether the entered word is contained in our list of words that have been already entered.
+Let's change the method 'alreadyEntered' so that it checks whether a given word already exists among the set of inputs, i.e., in our list of words that have been input.
 
 <!-- ```java
 public boolean onJoSyotetty(String sana) {
@@ -451,16 +451,16 @@ public boolean alreadyEntered(String word) {
 ```
 
 <!-- Nyt sovellus toimii kutakuinkin halutusti.-->
-Now the application works as intended.
+The application now works as intended.
 
 <!-- ## Oliot luonnollisena osana ongelmanratkaisua -->
 
-## Objects as Natural Parts of Problem Solving
+## Objects as a Natural Part of Problem Solving
 
 
 <!-- Rakensimme äsken ratkaisun ongelmaan, missä luetaan käyttäjältä sanoja, kunnes käyttäjä antaa saman sanan uudestaan. Syöte ohjelmalle oli esimerkiksi seuraavanlainen. -->
 
-We just built a solution to a problem where the program reads words from a user until the user enters a word that has already been entered before. Our example input was as follows:
+We've just built a solution to a problem where the program reads words from a user until the user enters a word that has already been entered before. The program input was similar to the following:
 
 
 <!-- <sample-output>
@@ -481,7 +481,7 @@ Enter a word: **celery**
 Enter a word: **turnip**
 Enter a word: **potato**
 Enter a word: **celery**
-You gave the same word twice!
+You entered the same word twice!
 
 </sample-output>
 
@@ -548,7 +548,7 @@ public class UserInterface {
 
         }
 
-        System.out.println("You gave the same word twice!");
+        System.out.println("You entered the same word twice!");
     }
 
     public boolean alreadyEntered(String word) {
@@ -563,7 +563,7 @@ public class UserInterface {
 
 <!-- Ohjelman käyttämä apumuuttuja lista `sanat` on yksityiskohta käyttöliittymän kannalta. Käyttöliittymän kannaltahan on oleellista, että muistetaan niiden *sanojen joukko* jotka on nähty jo aiemmin. Sanojen joukko on selkeä erillinen "käsite", tai abstraktio. Tälläiset selkeät käsitteet ovat potentiaalisia olioita; kun koodissa huomataan "käsite" voi sen eristämistä erilliseksi luokaksi harkita. -->
 
-From the point of view of the user interface, the support variable 'words' is just a detail. The main thing is that the user interface remembers the *set of words* that have been entered before. The set is a clear distinct "concept" or an abstraction. Distinct concepts like this are all potential objects: when we notice that we have an abstraction like this in our code, we can think about separating the concept into a class of its own.
+The 'words' helper variable used by the program is just a detail from the user interface perspective. What's relevant is that the user interface remembers the *set of words* that have been entered prior. The set of words is a clear and distinct "concept", or abstraction. These kinds of clear concepts are all potential objects: whenever we come across them in out code, we may consider separating the concept into its own class.
 
 <!-- ### Sanajoukko -->
 
@@ -571,7 +571,7 @@ From the point of view of the user interface, the support variable 'words' is ju
 
 <!-- Tehdään luokka `Sanajoukko`, jonka käyttöönoton jälkeen käyttöliittymän metodi `kaynnista` on seuraavanlainen: -->
 
- Let's make a class called 'WordSet'. After implementing the class, the user interface's start method looks like this:
+ Let's make a class called 'WordSet'. After implementing the class, the user interface's start method looks like so:
 
 <!-- ```java
 while (true) {
@@ -598,7 +598,7 @@ while (true) {
     wordSet.add(word);
 }
 
-System.out.println("You gave the same word twice!");
+System.out.println("You entered the same word twice!");
 ```
 
 <!-- Käyttöliittymän kannalta Sanajoukolla kannattaisi siis olla metodit `boolean sisaltaa(String sana)` jolla tarkastetaan sisältyykö annettu sana jo sanajoukkoon ja `void lisaa(String sana)` jolla annettu sana lisätään joukkoon.
@@ -607,9 +607,9 @@ Huomaamme, että näin kirjoitettuna käyttöliittymän luettavuus on huomattava
 
 Luokan `Sanajoukko` runko näyttää seuraavanlaiselta:-->
 
-From the point of view of the user interface, the class WordSet should contain the method 'boolean contains(String word)', that checks whether the given word is contained in our set of words, and the method 'void add(String word)', that adds the given word into the set.
+From the user interface's perspective, the class WordSet should contain the method 'boolean contains(String word)', that checks whether the given word is contained in our set of words, and the method 'void add(String word)', that adds the given word into the set.
 
-We notice that the readability of the user interface is greatly improved when it's written like this.
+We see that the readability of the user interface is much better when written this way.
 
 The outline for the class 'WordSet' looks like this:
 
@@ -653,12 +653,12 @@ public class WordSet {
 
 <!-- ### Toteutus aiemmasta ratkaisusta -->
 
-### An Implementation of the Previous Solution
+### Implementing the Previous Solution
 
 
 <!-- Voimme toteuttaa sanajoukon siirtämällä aiemman ratkaisumme listan sanajoukon oliomuuttujaksi: -->
 
-We can implement the set of words by making our earlier solution, the list, into an instance variable:
+We can implement the set of words by turning our previous solution, the list, into an instance variable of WordSet:
 
 
 <!-- ```java
@@ -705,9 +705,9 @@ public class WordSet {
 
 Muokataan käyttöliittymää niin, että se käyttää Sanajoukkoa. Sanajoukko annetaan käyttöliittymälle samalla tavalla parametrina kuin Scanner. -->
 
-Now our solution is quite elegant. We have separated a distinct concept into a class of its own, and our user interface looks clean. All the "dirty details" have been encapsulated neatly inside an object.
+Our solution is now quite elegant. We have separated a distinct concept into a class of its own, and our user interface looks clean. All the "dirty details" have been encapsulated neatly inside an object.
 
-Let's now edit the user interface so that it uses the class WordSet. The class is given to the user interface as a parameter, just like Scanner.
+Let's now edit the user interface so that it uses the class WordSet. The class is given to the user interface as a parameter, in the same way that Scanner is.
 
 <!-- ```java
 public class Kayttoliittyma {
@@ -760,7 +760,7 @@ public class UserInterface {
             this.wordSet.add(word);
         }
 
-        System.out.println("You gave the same word twice!");
+        System.out.println("You entered the same word twice!");
     }
 }
 ```
@@ -797,11 +797,11 @@ public static void main(String[] args) {
 
 <!-- Olemme päätyneet tilanteeseen missä `Sanajoukko` ainoastaan "kapseloi" ArrayList:in. Onko tässä järkeä? Kenties. Voimme nimittäin halutessamme tehdä Sanajoukolle muitakin muutoksia. Ennen pitkään saatamme esim. huomata, että sanajoukko pitää tallentaa tiedostoon. Jos tekisimme nämä muutokset Sanajoukkoon muuttamatta käyttöliittymän käyttävien metodien nimiä, ei käyttöliittymää tarvitsisi muuttaa mitenkään. -->
 
-We have arrived at a situation where the class 'WordSet' "encapsulates" an ArrayList. Is this reasonable? Perhaps. This is because we can make other changes to the class if we so desire, and before long we might arrive into a situation where the word set has to be, for example, saved into a file. If we make all these changes inside the class WordSet without changing the names of the methods that the user interface uses, we don't have to modify the actual user interface at all.
+We've arrived at a situation where the only thing the class 'WordSet' does is "encapsulate" an ArrayList. Is this sensible? Perhaps. We're in a position where we're able to make changes to the class if there is a need. We may before long run into a situation where the word set has to be saved into a file, for example. If we make all these changes inside the class WordSet without changing the names of the methods that the user interface uses, the user interface wouldn't need to be modified at all.
 
 <!-- Oleellista on tässä se, että Sanajoukko-luokkaan tehdyt sisäiset muutokset eivät vaikuta luokkaan Käyttöliittymä. Tämä johtuu siitä, että käyttöliittymä käyttää sanajoukkoa sen tarjoamien metodien -- eli julkisten rajapintojen -- kautta. -->
 
-The main point here is that changes made inside the class WordSet don't affect the class UserInterface. This is because the user interface uses WordSet through the methods that it provides -- these are called its public interfaces.
+The main point here is that changes made inside the class WordSet don't affect the UserInterface class. This is because the user interface uses WordSet through the methods that it provides, i.e., through its public interfaces.
 
 <!-- ## Uusien toiminnallisuuksien toteuttaminen: palindromit -->
 
@@ -810,7 +810,7 @@ The main point here is that changes made inside the class WordSet don't affect t
 
 <!-- Voi olla, että jatkossa ohjelmaa halutaan laajentaa siten, että `Sanajoukko`-luokan olisi osattava uusia asiota. Jos ohjelmassa haluttaisiin esimerkiksi tietää kuinka moni syötetyistä sanoista oli palindromi, voidaan sanajoukkoa laajentaa metodilla `palindromeja`. -->
 
-In the future, we might want to augment the program so that the class 'WordSet' offers some new functionalities. If, for example, we wanted to know how many of the entered words were palindromes, we could add a method called 'palindromes' into the program.
+We may want to augment the program in the future so that the class 'WordSet' offers some new functionalities. If, for example, we wanted to know how many of the words entered were palindromes, we could extend the word set by adding a 'palindromes' method.
 
 
 <!-- ```java
@@ -846,14 +846,14 @@ public void start() {
         this.wordSet.add(word);
     }
 
-    System.out.println("You gave the same word twice!");
+    System.out.println("You entered the same word twice!");
     System.out.println(this.wordSet.palindromes() + " of the words were palindromes.");
 }
 ```
 
 <!-- Käyttöliittymä säilyy siistinä ja palindromien laskeminen jää `Sanajoukko`-olion huoleksi. Metodin toteutus voisi olla esimerkiksi seuraavanlainen. -->
 
-The user interface remains clean, because counting the palindromes is done inside the 'WordSet' object. The following is an example implementation of the method.
+The user interface remains tidy and the counting of palindromes is confined to within the 'WordSet' object. The method could be implemented in the following way.
 
 <!-- ```java
 import java.util.ArrayList;
@@ -965,7 +965,7 @@ Kun ohjelmakoodin käsitteet on eriytetty omiksi luokikseen, voi niitä uusiokä
 
 <text-box variant='hint' name='Recycling'>
 
-When concepts have been separated into different classes in the code, recycling them and reusing them in other projects becomes easy. For example, the class 'WordSet' could be well be used in a graphical user interface, and it could also part of a mobile phone application. In addition, testing the program is much easier when it has been divided into several concepts, each of which has its own separate logic and can function alone as a unit.
+When concepts appearing in code have been separated into separate classes, they can easily be reused in other projects. As an example, the class 'WordSet' could equally well be used in a graphical user interface, or as part of a mobile phone application. In addition, testing a program is considerably easier if it has been divided into several concepts, each of which can function as its own unit.
 
 </text-box>
 
@@ -976,7 +976,7 @@ When concepts have been separated into different classes in the code, recycling 
 
 <!-- Yllä kuvatussa laajemmassa esimerkissä noudatettiin seuraavia neuvoja. -->
 
-In the larger example above, we were following the advice given here.
+We followed the advice given here in the broader example above.
 
 <!-- - Etene pieni askel kerrallaan
 
@@ -995,9 +995,9 @@ In the larger example above, we were following the advice given here.
 
 - Astu tarvittaessa askel taaksepäin ja mieti kokonaisuutta. Jos ohjelma ei toimi, voi olla hyvä idea palata aiemmin toimineeseen tilaan. Käänteisesti voidaan sanoa, että rikkinäinen ohjelma korjaantuu harvemmin lisäämällä siihen lisää koodia. -->
 
--  Proceed with small steps
-    -  Try to separate the program into several sub-problems and **work on only one sub-problem at a time**
-    -  Always test that the program code is advancing in the right direction, in other words: test that the solution to the sub-problem is correct
+-  Proceed in small steps
+    -  Try to separate the program into several subproblems and **work on only one subproblem at a time**
+    -  Always test that the program code is advancing in the right direction, in other words: test that the solution to the subproblem is correct
     -  Recognize the conditions that require the program to work differently. In the example above, we needed a different functionality to test whether a word had been already entered before.
 
 -  Write as "clean" code as possible
@@ -1008,11 +1008,11 @@ In the larger example above, we were following the advice given here.
     -  **Remove all copy-paste code**
     -  Replace the "bad" and unclean parts of your code with clean code
 
--  If needed, take a step back and assess the program as a whole. If it doesn't work, it might be a good idea to return into a previous state where the code still worked. As a corollary, we might say that a program that's broken is rarely fixed by adding more code to it.
+-  If needed, take a step back to assess the program as a whole. If it doesn't work, it might be a good idea to return it into a previous, working state. A program that's broken is rarely fixed by adding more code to it.
 
 <!-- Ohjelmoijat noudattavat näitä käytänteitä sen takia että ohjelmointi olisi helpompaa. Käytänteiden noudattaminen tekee myös ohjelmien lukemisesta, ylläpitämisestä ja muokkaamisesta helpompaa muille. -->
 
-Programmers follow these conventions so that programming can be made easier. Following them also makes it easier to read programs, to keep them up, and to edit them in teams.
+Programmers follow these conventions to make programming easier. Following them also makes programs easier to be read, maintained, and modified by others.
 
 
 <programming-exercise name='Simple Dictionary (4 parts)' tmcname='part06-Part06_09.SimpleDictionary'>
@@ -1057,7 +1057,7 @@ In this exercise you will implement a text user interface that takes use of the 
 
 <!-- <h2>Tekstikäyttöliittymän käynnistys ja lopetus</h2> -->
 
-<h2>Starting and stopping the UI</h2>
+<h2>Starting and Stopping the UI</h2>
 
 <!-- Toteuta luokka `Tekstikayttoliittyma`, joka saa konstruktorin parametrina `Scanner`-olion sekä `Sanakirja`-olion. Lisää tämän jälkeen luokalle metodi `public void kaynnista()`. Metodin tulee toimia seuraavalla tavalla: -->
 
