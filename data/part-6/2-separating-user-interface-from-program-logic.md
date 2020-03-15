@@ -1019,7 +1019,7 @@ Programmers follow these conventions to make programming easier. Following them 
 
 <!-- Tehtäväpohjassa on valmiiksi annettuna luokka `SimpleDictionary`, joka tarjoaa toiminnallisuuden sanojen ja niiden käännösten tallentamiseen. Vaikka luokan sisäisessä totetuksessa on asioita, joita kurssilla ei ole käsitelty, on sen käyttö suoraviivaista: -->
 
-The exercise base contains a class `SimpleDictionary` that allows for storing words and their translations. The internal implementation of the class contains some techniques not (yet) covered on the course. Nevertheless, it's fairly simple to use it:
+The exercise base contains a class `SimpleDictionary` that allows for storing words and their translations. Although the internal implementation of the class contains techniques that haven't been covered on the course yet, it's use is straightforward:
 
 <!-- ```java
 SimpleDictionary book = new SimpleDictionary();
@@ -1052,7 +1052,7 @@ null
 
 <!-- Tässä tehtävässä toteutat luokkaa `SimpleDictionary` hyödyntävän tekstikäyttöliittymän. -->
 
-In this exercise you will implement a text user interface that takes use of the `SimpleDictionary` class. And maybe pick up a few Finnish words while doing it!
+In this exercise, you will implement a text-based user interface that makes use of the `SimpleDictionary` class. You may pick up a few Finnish words while doing it!
 
 
 <!-- <h2>Tekstikäyttöliittymän käynnistys ja lopetus</h2> -->
@@ -1061,7 +1061,7 @@ In this exercise you will implement a text user interface that takes use of the 
 
 <!-- Toteuta luokka `Tekstikayttoliittyma`, joka saa konstruktorin parametrina `Scanner`-olion sekä `Sanakirja`-olion. Lisää tämän jälkeen luokalle metodi `public void kaynnista()`. Metodin tulee toimia seuraavalla tavalla: -->
 
-Implement the class `TextUI` that receives as constructor parameters a `Scanner` and `SimpleDictionary` objects. Then give the class a method called `public void start()`. The method should work as follows:
+Implement the class `TextUI` that receives `Scanner` and `SimpleDictionary` objects as its constructor's parameters. After this, equip the class with a  `public void start()` method. The method should work as follows:
 
 <!-- 1. Metodi kysyy käyttäjältä komentoa. -->
 
@@ -1069,11 +1069,11 @@ Implement the class `TextUI` that receives as constructor parameters a `Scanner`
 
 <!-- 2. Mikäli komento on `lopeta`, tekstikäyttöliittymä tulostaa merkkijonon "Hei hei!" ja metodin `kaynnista` suoritus päättyy. -->
 
-2. If the command is `end`, the UI prints the string "Bye bye!" and the execution of the `start` method ends.
+2. If the command is `end`, the UI prints the string "Bye bye!", and the execution of the `start` method ends.
 
 <!-- 3. Muulloin, tekstikäyttöliittymä tulostaa viestin "Tuntematon komento", jonka jälkeen metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-3. Otherwise the text UI prints the message `Unknown command` and asks for a new command, so it loops back to step 1.
+3. Otherwise, the text UI prints the message `Unknown command` and the method continues by asking for a new command, i.e., from stage 1.
 
 
 <!-- ```java
@@ -1130,15 +1130,15 @@ Modify the method `public void start()` so that it works in the following way:
 
 <!-- 2. Mikäli komento on `lopeta`, tekstikäyttöliittymä tulostaa merkkijonon "Hei hei!" ja metodin `kaynnista` suoritus päättyy. -->
 
-2. If the command is `end`, the UI prints the string "Bye bye!" and the execution of the `start` method ends.
+2. If the command is `end`, the UI prints the string "Bye bye!", and the execution of the `start` method ends.
 
 <!-- 3. Mikäli komento on `lisaa`, tekstikäyttöliittymä kysyy käyttäjältä sanaa ja käännöstä, kumpaakin omalla rivillään. Tämän jälkeen sanat lisätään sanakirjaan ja metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-3. If the command is `add`, the text UI asks the user for a word and a translation, each on its own line. After this the words are stored in the dictionary, and the method continues by asking for a new command (loops back to stage 1).
+3. If the command is `add`, the text UI asks the user for a word and a translation, each on its own line. After this, the words are added to the dictionary, and the method continues by asking for a new command (returns back to stage 1).
 
 <!-- 4. Muulloin, tekstikäyttöliittymä tulostaa viestin "Tuntematon komento", jonka jälkeen metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-4. Otherwise the text UI prints the message `Unknown command` and asks for a new command, so it loops back to step 1.
+4. Otherwise, the text UI prints the message `Unknown command` and the method continues by asking for a new command, i.e., from stage 1.
 
 <!-- <sample-output>
 
@@ -1170,7 +1170,7 @@ Bye bye!
 
 <!-- Yllä kuvatussa esimerkissä sanakirja-olioon lisätään sana "hauki" sekä sen käännös "pike". Sanakirjaa voisi tällöin käyttöliittymästä poistumisen jälkeen käyttää seuraavasti: -->
 
-In the example above, we added the word "pike" and its translation "hauki" to the SimpleDictionary object. After exiting the text user interface the dictionary could be used in the following manner:
+In the example above, we added the word "pike" and its translation "hauki" to the SimpleDictionary object. After exiting the text user interface, the dictionary could be used like so:
 
 <!-- ```java
 Scanner lukija = new Scanner(System.in);
@@ -1196,7 +1196,7 @@ System.out.println(dictionary.translate("pike")); // prints the string "hauki"
 
 <!-- Muokkaa metodia `public void kaynnista()` siten, että se toimii seuraavalla tavalla: -->
 
-Modify the method `public void start()` so that it works in the following:
+Modify the method `public void start()` so that it works the following way:
 
 <!-- 1. Metodi kysyy käyttäjältä komentoa. -->
 
@@ -1204,19 +1204,19 @@ Modify the method `public void start()` so that it works in the following:
 
 <!-- 2. Mikäli komento on `lopeta`, tekstikäyttöliittymä tulostaa merkkijonon "Hei hei!" ja metodin `kaynnista` suoritus päättyy. -->
 
-2. If the command is `end`, the UI prints the string "Bye bye!" and the execution of the `start` method ends.
+2. If the command is `end`, the UI prints the string "Bye bye!", and the execution of the `start` method ends.
 
 <!-- 3. Mikäli komento on `lisaa`, tekstikäyttöliittymä kysyy käyttäjältä sanaa ja käännöstä, kumpaakin omalla rivillään. Tämän jälkeen sanat lisätään sanakirjaan ja metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-3. If the command is `add`, the text UI asks the user for a word and a translation, each on its own line. After this the words are stored in the dictionary, and the method continues by asking for a new command (loops back to stage 1).
+3. If the command is `add`, the text UI asks the user for a word and a translation, each on its own line. After this, the words are stored in the dictionary and the method continues by asking for a new command (loops back to stage 1).
 
 <!-- 4. Mikäli komento on `hae`, tekstikäyttöliittymä kysyy käyttäjältä käännettävää sanaa. Tämän jälkeen tekstikäyttöliittymä tulostaa sanan käännöksen ja metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-4. If the command is `search`, the text UI asks the user for the word to be translated. After this it prints the translation of the word, and the method continues by asking for a new command (loops back to stage 1).
+4. If the command is `search`, the text UI asks the user for the word that is to be translated. After that, it prints the translation of the given word, and the method continues by asking for a new command, i.e., from stage 1.
 
 <!-- 5. Muulloin, tekstikäyttöliittymä tulostaa viestin "Tuntematon komento", jonka jälkeen metodi jatkaa kysymällä käyttäjältä komentoa eli kohdasta 1. -->
 
-5. Otherwise the text UI prints the message `Unknown command` and asks for a new command, so it loops back to step 1.
+5. Otherwise, the text UI prints the message `Unknown command` and the method continues by asking for a new command, i.e., from stage 1.
 
 <!-- <sample-output>
 
@@ -1314,7 +1314,7 @@ Bye bye!
 
 <!-- Tässä tehtävässä tehdään sovellus tehtävälistan luomiseen ja käsittelyyn. Lopullinen sovellus tulee toimimaan seuraavalla tavalla. -->
 
-In this exercise we are going to create a program that can be used to create and modify a to-do list. The final product will work in the following manner.
+In this exercise, we're going to create a program that can be used to create and modify a to-do list. The final product will work in the following manner.
 
 <!-- <sample-output>
 
@@ -1363,7 +1363,7 @@ Command: **stop**
 
 <!-- Tehdään sovellus osissa. -->
 
-We will build the program in parts.
+We'll build the program in parts.
 
 <!-- <h2>Tehtävälista</h2> -->
 
@@ -1378,8 +1378,8 @@ We will build the program in parts.
 Create a class called `ToDoList`. It should have a constructor without parameters and the following methods:
 
 - `public void add(String task)` - add the task passed as a parameter to the todo list.
-- `public void print()` - prints the exercises. Each task has a number associated with it on the print statement -- use the task's index here (+1).
-- `public void remove(int number)` - removes the task associated with the given number; the number is the one seen associated with the task in the print.
+- `public void print()` - prints the exercises. Each task has a number associated with it in the print statement -- use the task's index here (+1).
+- `public void remove(int number)` - removes the task associated with the given number; the number is the one seen associated with the task in the print output.
 
 <!-- ```java
 Tehtavalista lista = new Tehtavalista();
@@ -1430,7 +1430,7 @@ list.print();
 
 <!-- **Huom!** Voit olettaa, että metodille `poista` syötetään oikea tehtävää vastaava numero. Metodin tarvitsee toimia oikein vain kerran kunkin tulostuskutsun jälkeen. -->
 
-**NB!** You may assume that the `remove` method is given a number that corresponds to a real task. The method only has to correctly work once after each print call.
+**NB!** You may assume that the `remove` method is given a number that corresponds to a real task. The method has to work correctly only once after each print call.
 
 <!-- Toinen esimerkki: -->
 
@@ -1495,7 +1495,7 @@ list.print();
 
 <!-- <h2>Käyttöliittymä</h2> -->
 
-<h2>User interface</h2>
+<h2>User Interface</h2>
 
 <!-- Toteuta seuraavaksi luokka `Kayttoliittyma`. Luokalla `Kayttoliittyma` tulee olla kaksiparametrinen konstruktori. Ensimmäisenä parametrina annetaan luokan `Tehtavalista` ilmentymä ja toisena parametrina luokan `Scanner` ilmentymä. Konstruktorin lisäksi luokalla tulee olla metodi `public void kaynnista()`, joka käynnistää tekstikäyttöliittymän. Tekstikäyttöliittymä toteutetaan ikuisen toistolauseen (`while-true`) avulla, ja sen tulee tarjota seuraavat komennot:
 
@@ -1506,7 +1506,7 @@ list.print();
 
 Alla on esimerkki sovelluksen toiminnasta. -->
 
-Next, implement a class called `UserInterface`. It should have a constructor with two parameters. The first parameter is an instance of the class `ToDoList`, and the second is an instance of the class `Scanner`. In addition to the constructor, the class should have the method `public void start()` that is used to start the text user interface. The text UI works with an eternal looping statement (`while-true`), and it must offer the following commands to the user:
+Next, implement a class called `UserInterface`. It should have a constructor with two parameters. The first parameter is an instance of the class `ToDoList`, and the second is an instance of the class `Scanner`. In addition to the constructor, the class should have the method `public void start()` used to start the text user interface (UI). The text UI is implemented using an infite loop (`while-true`), and it must offer the following commands:
 
 - The command `stop` stops the execution of the loop, after which the execution of the program advances out of the `start` method.
 
@@ -1568,14 +1568,14 @@ Command: **stop**
 
 <!-- Huom! Käyttöliittymän tulee käyttää sille parametrina annettua tehtävälistaa ja Scanneria. -->
 
-NB! The user interface is to use the ToDoList and Scanner that are passed as parameters to the constructor.
+NB! The user interface should use the list and scanner objects that are passed as parameters to its constructor.
 
 
 </programming-exercise>
 
 <!-- ## Sovelluksesta osakokonaisuuksiin -->
 
-## From a Whole Application to Entities
+## From a Whole Application to Its Constituent Parts
 
 <!-- Tarkastellaan ohjelmaa, joka kysyy käyttäjältä koepisteitä, muuntaa ne arvosanoiksi, ja lopulta tulostaa kurssin arvosanajakauman tähtinä. Ohjelma lopettaa lukemisen kun käyttäjä syöttää tyhjän merkkijonon. Ohjelman käyttö näyttää seuraavalta: -->
 
@@ -1723,23 +1723,23 @@ public class Program {
                 break;
             }
 
-            int score = Integer.valueOf(input);
+            int points = Integer.valueOf(input);
 
-            if (score < 0 || score > 100) {
-                System.out.println("Impossible number.");
+            if (points < 0 || points > 100) {
+                System.out.println("Invalid number.");
                 continue;
             }
 
             int grade = 0;
-            if (score < 50) {
+            if (points < 50) {
                 grade = 0;
-            } else if (score < 60) {
+            } else if (points < 60) {
                 grade = 1;
-            } else if (score < 70) {
+            } else if (points < 70) {
                 grade = 2;
-            } else if (score < 80) {
+            } else if (points < 80) {
                 grade = 3;
-            } else if (score < 90) {
+            } else if (points < 90) {
                 grade = 4;
             } else {
                 grade = 5;
@@ -1773,7 +1773,7 @@ public class Program {
 
 <!-- Pilkotaan ohjelma pienempiin osiin. Ohjelman pilkkominen tapahtuu tunnistamalla ohjelmasta vastuualueita. Arvosanojen kirjanpito, mukaanlukien pisteiden muunnos arvosanoiksi, voisi olla erillisen luokan vastuulla. Tämän lisäksi käyttöliittymälle voidaan luoda oma luokkansa. -->
 
-Let's separate the program into smaller chunks. This can be done by identifying several discrete areas of responsibility within the program. Keeping track of grades, including converting scores into grades, could be done inside a different class. In addition, we could create a new class for the user interface.
+Let's separate the program into smaller parts. This is done by identifying areas of responsibility within the program. Keeping track of grades, which includes converting points into grades, could be done inside a different class. In addition, we could create a new class for the user interface.
 
 <!-- ### Sovelluslogikkka -->
 
