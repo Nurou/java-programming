@@ -1613,7 +1613,7 @@ Syötä koepisteet:
 Points: **91**
 Points: **98**
 Points: **103**
-Impossible number.
+Invalid number.
 Points: **90**
 Points: **89**
 Points: **89**
@@ -1773,7 +1773,7 @@ public class Program {
 
 <!-- Pilkotaan ohjelma pienempiin osiin. Ohjelman pilkkominen tapahtuu tunnistamalla ohjelmasta vastuualueita. Arvosanojen kirjanpito, mukaanlukien pisteiden muunnos arvosanoiksi, voisi olla erillisen luokan vastuulla. Tämän lisäksi käyttöliittymälle voidaan luoda oma luokkansa. -->
 
-Let's separate the program into smaller parts. This is done by identifying areas of responsibility within the program. Keeping track of grades, which includes converting points into grades, could be done inside a different class. In addition, we could create a new class for the user interface.
+Let's separate the program into smaller parts. This is done by identifying areas of responsibility within the program. Keeping track of grades, which includes the conversin of points into grades, could be the responsibility of a separate class. In addition, the user interface could have a class of its own.
 
 <!-- ### Sovelluslogikkka -->
 
@@ -1782,11 +1782,11 @@ Let's separate the program into smaller parts. This is done by identifying areas
 
 <!-- Sovelluslogiikka sisältää ohjelman toiminnan kannalta oleellisen osat kuten tiedon säilöntätoiminnallisuuden. Edellisestä esimerkistä voidaan tunnistaa arvosanojen säilömiseen tarvittava toiminnallisuus. Eriytetään luokka `Arvosanarekisteri`, jonka vastuulle tulee kirjanpito arvosanojen lukumääristä. Arvosanarekisteriin voidaan lisätä arvosana pisteiden perusteella, jonka lisäksi arvosanarekisteristä voi kysyä kuinka moni on saanut tietyn arvosanan. -->
 
-Application logic includes parts that are crucial for the execution of the program, like functionalities that store information. From the previous example, we can separate the parts that store grade information. From these we can make a class called 'GradeRegister', which is responsible for keeping track of the numbers of different grades students have received. In the register, we can add grades according to scores. In addition, we can use the register to ask how many people have received a certain grade.
+Application logic includes parts that are crucial for the execution of the program, such as methods of storing data. From the previous example, we're able to identify the functionality for storing the grades. Let's form a 'GradeRegister' class that's responsible for keeping count of the number of different grades that the students have received. Grades can be added to this based on points. We can also use the register to find out how many people have received a certain grade.
 
 <!-- Luokka voi näyttää esimerkiksi seuraavalta. -->
 
-An example class follows.
+The class could look like the following example.
 
 <!--
 ```java
@@ -1887,7 +1887,7 @@ public class GradeRegister {
 
 <!-- Kun arvosanarekisteri on eriytetty omaksi luokakseen, voidaan siihen liittyvä toiminnallisuus poistaa pääohjelmastamme. Pääohjelman muoto on nyt seuraavanlainen. -->
 
-When the grade register has been separated into a class, we can remove the functionality associated with it from our main program. The main program now looks like this.
+Once the grade register has been separated into a class, the functionality associated with it can be removed from our main program. The main program looks like this now.
 
 <!-- ```java
 import java.util.Scanner;
@@ -1950,14 +1950,14 @@ public class Program {
                 break;
             }
 
-            int score = Integer.valueOf(input);
+            int points = Integer.valueOf(input);
 
-            if (score < 0 || score > 100) {
-                System.out.println("Impossible number.");
+            if (points < 0 || points > 100) {
+                System.out.println("Invalid number.");
                 continue;
             }
 
-            register.addGradeBasedOnPoints(score);
+            register.addGradeBasedOnPoints(points);
         }
 
         System.out.println("");
@@ -1977,9 +1977,9 @@ public class Program {
 }
 ```
 
-<!-- Sovelluslogiikan eriyttämisestä tulee merkittävä hyöty ohjelman ylläpidettävyyden kannalta. Koska sovelluslogiikka -- tässä Arvosanarekisteri -- on erillinen luokka, voidaan sitä myös testata ohjelmasta erillisenä osana. Luokan `Arvosanarekisteri` voisi halutessaan kopioida myös muihin ohjelmiinsa. Alla on esimerkki yksinkertaisesta luokan `Arvosanarekisteri` manuaalsesta testaamisesta -- tämä kokeilu huomioi vain pienen osan rekisterin toiminnallisuudesta. -->
+<!-- Sovelluslogiikan eriyttämisestä tulee merkittävä hyöty ohjelman ylläpidettävyyden kannalta. Koska sovelluslogiikka -- tässä Arvosanarekisteri -- on erillinen luokka, voidaan sitä myös testata ohjelmasta erillisenä osana. Luokan `Arvosanarekisteri` voisi halutessaan kopioida myös muihin ohjelmiinsa. Alla on esimerkki yksinkertaisesta luokan `Arvosanarekisteri` manuaalisesta testaamisesta -- tämä kokeilu huomioi vain pienen osan rekisterin toiminnallisuudesta. -->
 
-Separating the program logic is a major benefit for the maintenance of the program. Since the program logic -- in this case the GradeRegister -- is its own class, it can also be tested separately from the other parts of the program. If you wanted to, you could copy the class `GradeRegister` and use it in your other programs. Below is an example of simple manual testing -- this experiment only concerns itself with a small part of the register's functionality.
+Separating program logic provides a significant advantage with regard to the program's maintainability. Since the program logic -- the GradeRegister in this case -- lives in its own class, it can also be tested separately from the other parts of the program. If you wanted to, you could copy the class `GradeRegister` and use it in your other programs. The example below is a simple demonstration of the GradeRegister class being manually tested -- it only concerns a small part of the register's functionality.
 
 <!-- ```java
 Arvosanarekisteri rekisteri = new Arvosanarekisteri();
@@ -2007,11 +2007,11 @@ System.out.println("Number of students with grade 0 (should be 2): " + register.
 
 <!-- Käyttöliittymä on tyypillisesti sovelluskohtainen. Luodaan luokka `Kayttoliittyma` ja eriytetään se pääohjelmasta. Käyttöliittymälle annetaan parametrina arvosanarekisteri, jota käytetään arvosanojen säilömiseen, ja Scanner-olio, jota käytetään syötteen lukemiseen. -->
 
-Typically each program has its own user interface. We will create the class `UserInterface` and separate it from the main program. The user interface receives two parameters in its constructor: a grade register for storing the grades, and a Scanner object used for reading input.
+A user interface is typically application specific. Let's create a `UserInterface` class and separate it from the main program. The user interface's constructor receives two parameters : a grade register for storing the grades, and a Scanner object for reading input.
 
 <!-- Kun käytössämme on käyttöliittymä, muodostuu ohjelman käynnistävästä pääohjelmasta hyvin selkeä. -->
 
-When we now have a separate user interface at our disposal, the main program that initializes the whole program becomes very clear.
+Once we have a separate user interface, the main program which is used to initialize the whole program becomes crystal clear.
 
 <!-- ```java
 import java.util.Scanner;
@@ -2105,7 +2105,7 @@ public class UserInterface {
 
 <!-- Voimme kopioida koepisteiden lukemisen sekä arvosanajakauman tulostamisen lähes suoraan aiemmasta pääohjelmastamme. Alla olevassa ohjelmassa osat on kopioitu aiemmasta pääohjelmasta, jonka lisäksi tähtien tulostukseen on luotu erillinen metodi -- tämä selkiyttää arvosanojen tulostamiseen käytettävää metodia. -->
 
-We can copy the code for reading exam points and printing grade distribution nearly as is from the previous main program. In the program below, parts of the code have indeed been copied from the earlier main program, and new method for printing stars has also been created -- this clarifies the method that is used for printing the grade distribution.
+We are able to copy the code used for reading exam points and printing the grade distribution almost directly from our previous main program. In the program below, the sections have been copied from our earlier main program, and a new method for printing the stars has also been added -- this clarifies the method that is used for printing the grade distribution.
 
 <!-- ```java
 import java.util.Scanner;
@@ -2196,7 +2196,7 @@ public class UserInterface {
             int points = Integer.valueOf(input);
 
             if (points < 0 || points > 100) {
-                System.out.println("Impossible number.");
+                System.out.println("Invalid number.");
                 continue;
             }
 
@@ -2230,7 +2230,7 @@ public class UserInterface {
 
 <!-- Tehtäväpohjassa on edellisessä esimerkissä rakennettu arvosanojen tallentamiseen tarkoitettu ohjelma. Tässä tehtävässä täydennät luokkaa `Arvosanarekisteri` siten, että se tarjoaa toiminnallisuuden arvosanojen ja koepisteiden keskiarvon laskemiseen. -->
 
-The exercise base includes the previously constructed program to store grades. In this exercise you will further develop the class `GradeRegister` so that it can calculate the average of grades and exam results.
+The exercise base includes the program constructed previously that keeps track of grades. In this exercise, you'll extend the `GradeRegister` class so that it provides the opportunity to calculate the average of grades and exam results.
 
 
 <!-- <h2>Arvosanojen keskiarvo</h2> -->
@@ -2239,7 +2239,7 @@ The exercise base includes the previously constructed program to store grades. I
 
 <!-- Lisää luokalle `Arvosanarekisteri` metodi `public double arvosanojenKeskiarvo()`, joka palauttaa arvosanojen keskiarvon. Mikäli arvosanarekisterissä ei ole yhtäkään arvosanaa, tulee metodin palauttaa luku `-1`.  Laske arvosanojen keskiarvo `arvosanat`-listaa hyödyntäen. -->
 
-Create the method `public double averageOfGrades()` for the class `GradeRegister`. It should return the average of the grades. If the register contains no grades, the method should return `-1`. Use the `grades` list to calculate the average.
+Create a method `public double averageOfGrades()` for the `GradeRegister` class. It should return the average of the grades. If the register contains no grades, the method should return `-1`. Calculate the average using the `grades` list.
 
 <!-- Käyttöesimerkki: -->
 
@@ -2279,7 +2279,7 @@ System.out.println(register.averageOfGrades());
 
 <!-- Lisää luokalle `Arvosanarekisteri` uusi oliomuuttuja lista, johon lisäät koepisteitä aina kun luokkaa käyttävä ohjelma kutsuu metodia `lisaaArvosanaPisteidenPerusteella`. Lisää tämän jälkeen luokalle metodi `public double koepisteidenKeskiarvo()`, joka laskee ja palauttaa koepisteiden keskiarvon. Mikäli arvosanarekisteriin ei ole lisätty yhtäkään koepistettä, tulee metodin palauttaa luku `-1`. -->
 
-Add a new instance variable to the `GradeRegister` class: a list where you'll store the exam points every time the method `addGradeBasedOnPoints` is called. After this, create a method `public double averageOfPoints()` that calculates and returns the average of the exam points. If there are no points added to the register, the method should return the number `-1`.
+Add a new list as an instance variable to the `GradeRegister` class that you add exam points to every time the method `addGradeBasedOnPoints` is called. After that, create a method `public double averageOfPoints()` that calculates and returns the average of the exam points. If there are no points added to the register, the method should return the number `-1`.
 
 Example:
 
@@ -2314,7 +2314,7 @@ System.out.println(register.averageOfPoints());
 
 <!-- Lisää lopulta edellä toteutetut metodit osaksi käyttöliittymää. Kun sovellus tulostaa arvosanajakauman, tulee sovelluksen tulostaa myös pisteiden ja arvosanojen keskiarvo. -->
 
-For the final step, add the methods implemented above to the user interface. When the program prints the grade distribution, it should also print the averages of both the points and the grades.
+Finally, add the methods implemented above to the user interface. When the program prints the grade distribution, it should also print the averages of both the points and the grades.
 
 <!-- <sample-output>
 
@@ -2456,7 +2456,7 @@ while (true) {
 
 <!-- Sovellus on käytännössä vitsipankki. Vitsipankkiin voi lisätä vitsejä, vitsipankista voi arpoa vitsejä, ja vitsipankissa olevat vitsit voidaan tulostaa. Tässä tehtävässä sovellus pilkotaan osiin ohjatusti. -->
 
-The application is a joke bank. You can add jokes to it, draw them from it at random, and they can also be printed. In this exercise, the program is divided into parts in a guided manner.
+The application is a joke bank. Jokes can be added the bank, random ones drawn from it, and the jokes may also be printed. In this exercise, the program is divided into parts in an instructed way.
 
 <!-- <h2>Vitsipankki</h2> -->
 
@@ -2470,7 +2470,7 @@ The application is a joke bank. You can add jokes to it, draw them from it at ra
 
 Esimerkki luokan käytöstä: -->
 
-Create a class called `JokeManager` and move the functionality to manage jokes in it. The class must have a parameter-free constructor, and the following methods:
+Create a class called `JokeManager` and move the functionality to manage jokes in it. The class must have a parameterless constructor and the following methods:
 
 - `public void addJoke(String joke)` - adds a joke to the manager.
 - `public String drawJoke()` - chooses one joke at random and returns it. It there are no jokes stored in the joke manager, the method should return the string "Jokes are in short supply.".
@@ -2510,7 +2510,7 @@ manager.printJokes();
 
 <!-- Alla ohjelman mahdollinen tulostus. Huomaa, että arvotut vitsit eivät todennäköisesti tulostu alla kuvatun esimerkin mukaisesti. -->
 
-Below is a possible output of the program. Notice that the jokes will probably not be drawn as in this example.
+Below is one possible output produced by the program. Notice that the jokes will probably not be drawn as in this example.
 
 <!-- <sample-output>
 
@@ -2556,16 +2556,16 @@ Käyttöliittymän tulee tarjota seuraavat komennot:
 
 Esimerkki käyttöliittymän käytöstä: -->
 
-Create a class called `UserInterface` and move the UI functionality of the program theres. The class must have a constructor with two parameters. The first parameter is an instance of the JokeManager class, and the second parameter is an instance of the Scanner class. In addition, the class should have the method `public void start()` that can be used to start the user interface.
+Create a class called `UserInterface` and move the UI functionality of the program into it. The class must have a constructor with two parameters. The first parameter is an instance of the JokeManager class, and the second parameter is an instance of the Scanner class. In addition, the class should have the method `public void start()` that can be used to start the user interface.
 
 The user interface should provide the user with the following commands:
 
-- `X` - ending: exits the method `start`.
+- `X` - ending: exits the `start` method.
 - `1` - adding: asks the user for the joke to be added to the joke manager, and then adds it.
-- `2` - drawing: chooses a random joke from the joke manager and prints it. If there are no jokes in the manager, thi string "Jokes are in short supply." will be printed.
+- `2` - drawing: chooses a random joke from the joke manager and prints it. If there are no jokes in the manager, the string "Jokes are in short supply." will be printed.
 - `3` - printing: prints all the jokes stored in the joke manager.
 
-An example of how to use the UI:
+An example of using UI:
 
 <!-- ```java
 Vitsipankki pankki = new Vitsipankki();
