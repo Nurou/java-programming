@@ -12,16 +12,16 @@ hidden: false
 - Tiedät mistä yksikkötestauksessa on kyse ja osaat kirjoittaa yksikkötestejä.
 - Tiedät testivetoisen ohjelmistokehitysmenetelmän. -->
 
-- Can tell about some issues caused by software bugs.
-- You know what a stack trace is, the steps taken in troubleshooting, and can give textual test inputs to a Scanner.
-- You know what unit testing is all about and you can write unit tests.
-- You know about test-driven software development.
+- You're able to mention some issues caused by software bugs.
+- You know what a stack trace is, are familiar with the steps taken in troubleshooting, and are able to provide test inputs to a Scanner in text form.
+- You know what unit testing is and are able to write unit tests.
+- You know test-driven software development.
 
 </text-box>
 
 <!-- Otetaan seuraavaksi ensiaskeleet ohjelmien testaamiseen. -->
 
-Let's take our first steps in the world of program testing.
+Let's take our first steps in the world of software testing.
 
 <!-- ## Virhetilanteet ja ongelman ratkaiseminen askel kerrallaan -->
 
@@ -31,22 +31,22 @@ Let's take our first steps in the world of program testing.
 
 Virheitä ei kannata missään nimessä pelätä tai välttää, sillä virheitä tekemällä oppii parhaiten. Pyri siis myös välillä rikkomaan työstämääsi ohjelmaa, jolloin pääset tutkimaan virheilmoitusta ja tarkastelemaan kertooko virheilmoitus jotain tekemästäsi virheestä. -->
 
-Errors end up in the programs that we write. Sometimes the errors are not serious and cause headache mostly to users of the program. Occasionally, however, mistakes can lead to very serious consequences. In any case, it's certain that a person learning to program makes many mistakes.
+Errors end up in the programs that we write. Sometimes these errors are not serious and cause headache mostly to the program's users. Occasionally, however, mistakes can lead to very serious consequences. In any case, what's certain is that anyone learning to program will make lots of mistakes.
 
-You should never be afraid of or avoid making mistakes since that is the best way to learn. For this reason, try to break the program that you're working on from time to time to investigate error messages, and to see if those messages tell you something about the error(s) you've made.
+You should in no way be afraid of, or avoid, making mistakes as it's the best way to learn. It's for this reason that you should try to break the program that you're working on from time to time to provide yourself an opportunity to investigate error messages, and to see if those messages tell you something about the error(s) you've made.
 
 <!-- <text-box variant='hint' name='Ohjelmistovirhe'> -->
 <text-box variant='hint' name='Software Error'>
 
 <!-- Osoitteessa <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a> oleva raportti kuvaa erään hieman vakavamman ohjelmistovirheestä johtuneen tapaturman sekä ohjelmistovirheen. -->
 
-The report in the address <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a > describes an incident resulting from a more serious software error and also the error itself.
+The report in the address <a href="http://sunnyday.mit.edu/accidents/MCO_report.pdf" target="_blank">http://sunnyday.mit.edu/accidents/MCO_report.pdf</a > describes an incident resulting from a more serious software error and the error itself.
 
 <br/>
 
 <!-- Ohjelmistovirhe liittyi siihen, että käytetty ohjelma odotti, että ohjelmoija käyttäisi <a href="https://fi.wikipedia.org/wiki/Kansainv%C3%A4linen_yksikk%C3%B6j%C3%A4rjestelm%C3%A4" target="_blank">kansainvälistä yksikköjärjestelmää</a> laskuissa (metrit, kilogrammat, ...). Ohjelmoija oli kuitenkin käyttänyt <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank">amerikkalaista mittajärjestelmää</a> erään järjestelmän osan laskuissa, jolloin satelliitin navigointiin liittynyt automaattinen korjausjärjestelmä ei toiminut oikein. -->
 
-The bug in the software was caused by the fact that the program in question expected the programmer to use the <a href = "https://en.wikipedia.org/wiki/International_System_of_Units" target = " _blank "> International System of Units </a> (meters, kilograms, ...) in the calculations. However, the programmer had used the <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank"> American Measurement System </a> for some of the system's calculations, which prevented the satellite navigation auto-correction system from working as inteded.
+The bug in the software was caused by the fact that this particular program expected the programmer to use the <a href = "https://en.wikipedia.org/wiki/International_System_of_Units" target = " _blank "> International System of Units (SI) </a> (meters, kilograms, ...) in their calculations. The programmer, however, had used the <a href="https://en.wikipedia.org/wiki/English_Engineering_units" target="_blank"> American Measurement System </a> instead for some of the system's calculations, which prevented the satellite navigation auto-correction system from working as intended.
 
 <br/>
 
@@ -58,13 +58,13 @@ The satellite was destroyed.
 
 <!-- Ohjelmien muuttuessa monimutkaisemmiksi, tulee virheiden löytämisestäkin haastavampaa. NetBeansiin integroitu debuggeri voi olla avuksi virheiden löytämisessä. Debuggerin käyttöä on esitelty kurssimateriaaliin upotetuilla videoilla; niiden kertaamisesta ei ole koskaan haittaa. -->
 
-As programs grow in their complexity, finding errors becomes even more challenging. The debugger integrated into NetBeans can help you find errors. The use of the debugger is introduced with videos embedded in the course material; going over them is always an option.
+As programs grow in their complexity, finding errors becomes even more challenging. The debugger integrated into NetBeans can help you in this. Videos that cover the use of the debugger are embedded in the course material; going over them might prove to be beneficial.
 
 ## Stack Trace
 
 <!-- Kun ohjelmassa tapahtuu virhe, ohjelma tyypillisesti tulostaa ns. stack tracen, eli niiden metodikutsujen listan, joiden seurauksena virhetilanne syntyi. Stack trace voi näyttää esimerkiksi seuraavalta: -->
 
-When an error occurs in a program, the program typically prints something called a stack trace, i.e., the list of method calls that resulted in the error. For example, a stack trace might look like this:
+When an error occurs in a program, the program typically prints something called a stack trace, i.e., the list of the method calls that resulted in the error. A stack trace might look like this, for example:
 
 <!-- <sample-output>
   Exception in thread "main" ...
@@ -107,8 +107,8 @@ If your code doesn't work and you don't know where the error is, these steps wil
 1. Indent your code properly and find out if there are any missing parentheses.
 2. Verify that the variables used are correctly named.
 3. Test the program flow with different inputs and find out the sort of input that causes the program to not work as desired. If you received an error in the tests, the tests may also indicate the input used.
-4. Add print commands to the program in which you print out the values of the variables used at various stages of the program's execution.
-5. Verify that all variables you are using are initialized. If they aren't, a NullPointerException error will occur.
+4. Add print statements to the program that print out variable values at various stages of the program's execution.
+5. Verify that all variables you are using are initialized. If they aren't, a NullPointerException error will follow.
 6. If your program causes an exception, you should definitely pay attention to the <em>stack trace</em> associated with the exception, which is the list of method calls that resulted in the situation that caused the exception.
 7. Learn how to use the debugger. The earlier video will get you started.
 
@@ -120,9 +120,9 @@ If your code doesn't work and you don't know where the error is, these steps wil
 
 Testisyötteen voi antaa merkkijonona Scanner-oliolle konstruktorissa. Jokainen testisyötteessä annettava rivinvaihto merkitään merkkijonoon kenoviivan ja n-merkin yhdistelmänä "\n". -->
 
-Manually testing the program is often laborious. It's possible to automate the passing of input by, for example, passing the string to be read into a Scanner object. You'll find an example below of how to test a program automatically. The program first enters five strings, followed by the previously seen string. After that, we try to enter a new string. The string "six" should not appear in the word set.
+Manually testing the program is often laborious. It's possible to automate the provision of input by, for instance, passing the string to be read into a Scanner object. You'll find an example below on how to automatically test a program. Five strings are initially provided as input, followed by the string seen previously.  We then try to input a new string. The string "six" should not appear in the set of words.
 
-The test input can be given as a string to the Scanner object in the constructor. Each line break in the test feed is marked on the string with a combination of a backslash and an n character "\n".
+The test input can be passed as a string to the Scanner object's constructor. Each line break in the test input is marked with a combination of a backslash and an n character - "\n".
 
 <!-- ```java
 String syote = "yksi\n" + "kaksi\n"  +
@@ -210,11 +210,11 @@ Kun haluat testata ohjelmasi toimintaa jälleen käsin, vaihda Scanner-olion kon
 
 Ohjelman toiminnan oikeellisuus tulee edelleen tarkastaa ruudulta. Tulostus voi olla aluksi hieman hämmentävää, sillä automatisoitu syöte ei näy ruudulla ollenkaan. Lopullinen tavoite on automatisoida myös ohjelman tulostuksen oikeellisuden tarkastaminen niin hyvin, että ohjelman testaus ja testituloksen analysointi onnistuu "nappia painamalla". Palaamme aiheeseen myöhemmissä osissa. -->
 
-Passing a string to the constructor of the Scanner class replaces input read from the keyboard. As such, the content of the string variable `input` 'simulates' user input. A line break in the input is marked with `\n`. Therefore, each part ending in an newline character in a given string input corresponds to one input given to the `nextLine()` command.
+Providing the constructor of the Scanner class with a string compensates for input that'd otherwise be read from the keyboard. This way, the content of the string variable `input` 'simulates' user input. A line break in the input is marked with `\n`. Therefore, each part ending in an newline character in a given string input corresponds to one input given to the `nextLine()` command.
 
-When testing your program again manually, change the parameter Scanner object constructor to `System.in`, i.e., to the system's input stream. Alternatively, you can also change the test input, since we're dealing with a string.
+When testing your program manually again, switch the Scanner object's constructor to `System.in`, i.e., to the system's input stream. You could, alternatively, also change the test input, since we're dealing with a string.
 
-The working of the program should continue to be checked on-screen. The print output can be a little confusing at first, as the automated input is not visible on the screen at all. The ultimate aim is to also automate the checking of the correctness of the output so that the program can be tested and the test result analyzed with the "push of a button". We shall return to this in later sections.
+The program function should continue to be monitored on the screen. The print output may be somewhat confusing at first as the automated input is not visible on the screen at all. The ultimate aim is to also automate the evaluation of the correctness of the output so that the program can be tested and the test result analyzed with the "push of a button". We shall return to this in later sections.
 
 <!-- ## Yksikkötestaus -->
 
@@ -226,11 +226,11 @@ Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien ku
 
 Testien kirjoittamisessa hyödynnetään tyypillisesti valmiita yksikkötestauskirjastoja, jotka tarjoavat metodeja ja apuluokkia testien kirjoittamiseen. Javassa käytetyin yksikkötestauskirjasto on <a href="http://junit.org/" target="_blank" rel="noopener">JUnit</a>, johon löytyy myös tuki lähes kaikista ohjelmointiympäristöistä. Esimerkiksi NetBeans osaa automaattisesti etsiä JUnit-testejä projektista -- jos testejä löytyy, ne näytetään projektin alla Test Packages -kansiossa. -->
 
-The automated testing mehtod laid out above where the input to a program is modified is quite convenient, but limited nonetheless. Testing larger programs in this way is challenging. One solution to this is unit testing, where small parts of the program are tested in isolation.
+The method presented above for automated testing where the inputs that a program is provided with are modified is convenient but limited nonetheless. Testing larger programs in this way is challenging. One possible solution to this is unit testing, where small parts of the program are tested in isolation.
 
-Unit testing refers to the testing of individual components in the source code, such as classes and their provided methods. The writing of tests revelas whether each class and method observs or deviates from the guideline of each method and class having a single, clear responsibility. The more responsibility the method has, the more complex the test. If a large application is written in a single method, writing tests for it becomes very challenging, if not impossible. Similarly, if the application is broken into clear classes and methods, then writing tests is straightforward.
+Unit testing refers to tests performed on individual components found in the source code, such as classes and the methods that they provide. The writing of tests reveals whether the classes and methods observe or deviate from the convention of each method and class having a single, clear, responsibility. The more responsibility a method has, the more complicated the test. Were a large application to be written in a single method, writing tests for it would be extremely challenging, if not impossible. Similarly, if the application is broken into classes and methods that are clear, writing tests becomes straightforward.
 
-Ready-made unit test libraries are commonly used in writing tests, which provide methods and help classes for writing tests. The most common unit testing library in Java is <a href="http://junit.org/" target="_blank" rel="noopener"> JUnit </a>, which is also supported by almost all programming environments. For example, NetBeans can automatically search for JUnit tests in a project -- if any are found, they will be displayed under the project in the Test Packages folder.
+Tests are commonly written using existing unit-test libraries, which provide methods and support classes for writing tests. The most popular unit-testing library in Java is <a href="http://junit.org/" target="_blank" rel="noopener"> JUnit </a>, which is also supported by almost all programming environments. NetBeans, for example, can automatically search for JUnit tests in a project -- if any are found, they will be displayed under the project in the Test Packages folder.
 
 <br/>
 
