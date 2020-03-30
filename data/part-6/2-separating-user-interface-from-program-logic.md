@@ -10,8 +10,7 @@ hidden: false
 <!-- - Osaat luoda tekstikäyttöliittymän, joka saa parametrinaan sovelluskohtaisen sovelluslogiikan sekä syötteen lukemiseen käytettävän Scanner-olion. -->
 
  - You become familiar with creating programs where the user interface and the application logic are separated
-
- - You know how to create a textual user interface that takes as its parameters program-specific application logic and a Scanner object for reading inputs
+ - You know how to create a text-based user interface that takes as its parameters program-specific application logic and a Scanner object for reading inputs
 
 
 </text-box>

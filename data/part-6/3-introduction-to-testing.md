@@ -274,7 +274,7 @@ public class Calculator {
         this.value = this.value + number;
     }
 
-    public void substract(int number) {
+    public void subtract(int number) {
         this.value = this.value + number;
     }
 
@@ -290,9 +290,9 @@ Yksikkötestien kirjoittaminen aloitetaan testiluokan luomisella. Testiluokka lu
 
 Testiluokka `LaskinTest` on aluksi tyhjä. -->
 
-The calculator works by always remembering the result produced by the preceding calculation. All subsequent calculations are always added to the previous result. A minor error resulting from copying and pasting has been left in the calculator above. The method substract should deduct from the value, but it currently adds to it.
+The calculator works by always remembering the result produced by the preceding calculation. All subsequent calculations are always added to the previous result. A minor error resulting from copy-paste has been left in the calculator above. The method subtract should deduct from the value, but it currently adds to it.
 
-Unit test writing begins by creating a test class, which is created under the Test-Packages folder. When testing the `Calculator` class, the test class is to be called `CalculatorTest`. The string `Test` at the end of the name tells the programming environment that this is a test class. Without the string Test, tests in the class would not be executed. (Note: Tests are created in NetBeans under the Test Packages folder.)
+Writing unit tests begins by creating a test class, which is created under the Test-Packages folder. When testing the `Calculator` class, the test class should be called `CalculatorTest`. The string `Test` at the end of the name tells the programming environment that this is a test class. Without the string Test, tests in the class would not be executed. (Note: Tests are created in NetBeans under the Test Packages folder.)
 
 The test class `CalculatorTest` is initially empty.
 
@@ -310,7 +310,7 @@ public class CalculatorTest {
 
 <!-- Testit ovat testiluokassa olevia metodeja ja jokainen testi testaa yksittäistä asiaa. Aloitetaan luokan Laskin testaaminen -- luodaan ensin testimetodi, jossa varmistetaan, että juuri luodun laskimen sisältämä arvo on 0. -->
 
-Tests are methods of the test class where each test tests an individual unit. Let's begin testing the class -- we start off by creating a test method that confirms that the newly created calculator's value is intially 0.
+Tests are methods that belong to a test class - each test tests an individual unit. Let's begin testing the class -- we start off by creating a test method that confirms that the newly created calculator's value is intially 0.
 
 <!-- ```java
 import static org.junit.Assert.assertEquals;
@@ -346,11 +346,11 @@ Testien suorittaminen onnistuu valitsemalla projekti oikealla hiirennapilla ja k
 
 Testien suorittaminen luo output-välilehdelle (tyypillisesti NetBeansin alalaidassa) tulosteen, jossa on testiluokkakohtaiset tilastot. Alla olevassa esimerkissä on suoritettu pakkauksessa laskin olevan testiluokan LaskinTest testit. Testejä suoritettiin 1, joista yksikään ei epäonnistunut -- epäonnistuminen tarkoittaa tässä sitä, että testin testaama toiminnallisuus ei toiminut oletetusti. -->
 
-In the calculatorInitialValueZero method a calculator object is first created. The assertEquals method provided by the JUnit test framework is then used to check the value. The method is imported from the Assert class with the import Static command, and it's given the expected value as a parameter - 0 in this instance - and the value returned by the calculator. If the values of the assertEquals method values ​​differ, the test will not pass. Each test method should have an "annotation" `@ Test`. This tells the JUnit test framework that this is an executable test method.
+ We initially create calculator object in the calculatorInitialValueZero method. The assertEquals method provided by the JUnit test framework is then used to check the value. The method is imported from the Assert class with the import Static command, and it's given the expected value as a parameter - 0 in this instance - and also the value returned by the calculator. If the values of the assertEquals method values ​​differ, the test will not pass. Each test method should have an "annotation" `@ Test`. This tells the JUnit test framework that this is an executable test method.
 
 To run the tests, select the project with the right-mouse button and click Test.
 
-Running the tests prints to the output tab (typically at the bottom of NetBeans) that contains some information specific to each test class. In the example below, tests of the CalculatorTest class from the package are executed. The number of tests executed were 1, none of which failed -- failure in this context means that the functionality tested by the test did not work as expected. ->
+Running the tests prints to the output tab (typically at the bottom of NetBeans) that contains some information specific to each test class. In the example below, tests of the CalculatorTest class from the package are executed. The number of tests executed were 1, none of which failed -- failure in this context means that the functionality that the test was testing did not work as expected. ->
 
 <!-- <sample-output>
 
@@ -375,7 +375,7 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 
 <!-- Lisätään testiluokkaan summaa ja erotusta lisäävää toiminnallisuutta. -->
 
-Let's add functionality for summing and substacting to the test class.
+Let's add functionality for performing sums and subtractions to the test class.
 
 <!--
 ```java
@@ -426,9 +426,9 @@ public class CalculatorTest {
     }
 
     @Test
-    public void valueMinusTwoWhenTwoSubstracted() {
+    public void valueMinusTwoWhenTwoSubtracted() {
         Calculator calculator = new Calculator();
-        calculator.substract(2);
+        calculator.subtract(2);
         assertEquals(-2, calculator.getValue());
     }
 }
@@ -459,10 +459,10 @@ BUILD SUCCESSFUL (total time: 0 seconds)
 Testsuite: CalculatorTest
 Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.059 sec
 
-Testcase: valueMinusTwoWhenTwoSubstracted(CalculatorTest): FAILED
+Testcase: valueMinusTwoWhenTwoSubtracted(CalculatorTest): FAILED
 expected:<-2> but was:<2>
 junit.framework.AssertionFailedError: expected:<-2> but was:<2>
-at CalculatorTest.valueMinusTwoWhenTwoSubstracted(CalculatorTest.java:25)
+at CalculatorTest.valueMinusTwoWhenTwoSubtracted(CalculatorTest.java:25)
 
 Test CalculatorTest FAILED
 test-report:
@@ -477,7 +477,7 @@ Edellisillä testeillä kaksi testeistä menee läpi, mutta yhdessä on tapahtun
 
 The output tells us that three tests were executed. One of them failed. The test output also informs us of the line in which the error occured (25), and of the expected (-2) and actual (2) values. Whenever the execution of tests ends in an error, NetBeans also displays the error state visually.
 
-With the previous tests two passed, but one of them resulted in an error. Let's fix the mistake left in the Calculator class.
+Two of our previous tests passed, but one resulted in an error. Let's fix the mistake left in the Calculator class.
 
 <!-- ```java
 // ...
@@ -489,7 +489,7 @@ public void erotus(int luku) {
 
 ```java
 // ...
-public void substract(int number) {
+public void subtract(int number) {
     this.value -= number;
 }
 // ...
@@ -497,7 +497,7 @@ public void substract(int number) {
 
 <!-- Kun testit suoritetaan uudestaan, testit menevät läpi. -->
 
-When the test are run again, they pass.
+When the test are run again, they all pass.
 
 <!-- <sample-output>
 
@@ -551,21 +551,21 @@ Testivetoinen ohjelmistokehitys koostuu viidestä askeleesta, joita toistetaan k
 
 5. Korjaa ohjelman sisäistä rakennetta. Kun ohjelman koko kasvaa, sen sisäistä rakennetta korjataan tarvittaessa. Liian pitkät metodit pilkotaan useampaan osaan ja ohjelmasta eriytetään käsitteisiin liittyviä luokkia. Testejä ei muuteta, vaan niitä hyödynnetään ohjelman sisäiseen rakenteeseen tehtyjen muutosten oikeellisuuden varmistamisessa -- jos ohjelman rakenteeseen tehty muutos muuttaa ohjelman toiminnallisuutta, testit varoittavat siitä, ja ohjelmoija voi korjata tilanteen. -->
 
-<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener"> Test-driven development </a> is a software development process that's based on constructing a piece of software in small iterations. In test-driven software development, the first thing a programmer always does is write an automatically-executable test, which tests a single piece of the computer program.
+<a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank" rel="noopener"> Test-driven development </a> is a software development process that's based on constructing software from small pieces. In test-driven software development, the first thing that the programmer always does is write an automatically-executable test that tests a single piece of the computer program.
 
-The test will not pass because the functionality that satisfies the test, i.e., the part of the computer program to be examined, is missing. Once the test has been written, functionality that meets the test requirements is added to the program. The tests are run again. If all tests pass, a new test is added, or alternatively, if the tests fail, the already-written program is corrected. If necessary, the internal structure of the program will be corrected or refactored, so that the functionality of the program remains the same, but the structure becomes clearer.
+The test will not pass because the functionality that satisfies the test, i.e., the part of the computer program to be examined, is missing. Once the test has been written, functionality that meets the test requirements is added to the program. The tests are run again. If all of the tests pass, a new test is added. If the tests fail, however, we need to fix the program. The program's structure is improved as needed, i.e., refactored, so that it becomes clearer to read while the functionality remains the same.
 
-Test-driven software development consists of five steps that are repeated until the functionality of the program is complete.
+Test-driven software development consists of five steps that are repeated until the the program is fully functional.
 
 1. Write a test. The programmer decides which program functionality to test and writes a test for it.
 
 2. Run the tests and check if the tests pass. When a new test is written, the tests are run. If the test passes, the test is most likely erroneous and should be corrected - the test should only test functionality that hasn't yet been implemented.
 
-3. Write the functionality that meets the test's requirements. The programmer implements functionality that only meets the test requirements. Note: this doesn't do things that the test does not require - functionality is only added in small increments.
+3. Write the functionality that meets the test's requirements. The programmer implements functionality that only meets the test requirements. Note: we don't implement anything that the test does not require to pass - functionality is only added in tiny increments.
 
-4. Perform the tests. If the tests fail, there is likely to be an error in the functionality written. Correct the functionality - or, if there is no error in the functionality, fix the latest test that was performed.
+4. Perform the tests. If the tests fail, there's likely an error in the functionality that's been written. Correct the functionality - or, if there was nothing wrong with it, fix the latest test that was performed.
 
-5. Repair the internal structure of the program. As the size of the program increases, its internal structure is adjusted as needed. Methods that are too long are broken down into multiple parts and classes representing concepts are isolated. The tests are not modified, but are instead used to verify the correctness of the changes made to the program's internal structure - if a change in the program structure changes the functionality of the program, the tests will produce a warning and the programmer can remedy the situation.
+5. Fix the internal structure of the program. As the size of the program increases, its internal structure is adjusted as needed. Methods that are too long are broken down into parts and classes that represent distinct concepts are isolated. The tests are not modified, but are instead used to verify the correctness of the changes made to the program's internal structure - if a change in the program structure changes the functionality of the program, the tests will produce a warning and the programmer is able to remedy the situation.
 
 <pdf-slideshow>
 
